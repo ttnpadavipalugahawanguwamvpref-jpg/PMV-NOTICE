@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="si">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#68152f">
+<title>PMV School App</title>
+<style>
+:root{--wine:#68152f;--wine2:#4c0e22;--gold:#d7a928;--gold2:#f4e5a9;--bg:#f6f4f2;--card:#fff;--text:#231b1f;--muted:#71676b;--line:#eadfe2;--shadow:0 10px 30px rgba(53,16,27,.10);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,system-ui,sans-serif;background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}body.bg-active{background-image:var(--pmv-bg)}body.bg-active:before{content:"";position:fixed;inset:0;background:rgba(20,10,14,.35);z-index:-1}.app{min-height:100vh}.top{height:72px;background:var(--wine);color:#fff;display:flex;align-items:center;gap:12px;padding:0 20px;position:sticky;top:0;z-index:50;box-shadow:0 5px 22px rgba(0,0,0,.18)}.logo{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid var(--gold);flex:0 0 auto}.brand{flex:1;min-width:0}.brand b{display:block;font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.brand small{display:block;font-size:12px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.top-btn{border:0;background:rgba(255,255,255,.10);color:#fff;border-radius:11px;padding:10px 12px;position:relative}.badge{position:absolute;top:-5px;right:-5px;background:#e53935;color:#fff;border-radius:999px;min-width:19px;height:19px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;padding:0 5px}.layout{display:flex;max-width:1500px;margin:auto;min-height:calc(100vh - 72px)}.side{width:248px;background:rgba(255,255,255,.96);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:72px;height:calc(100vh - 72px);overflow:auto}.nav{display:grid;gap:6px}.nav a{padding:12px 13px;border-radius:12px;color:#4a3d42;text-decoration:none;font-weight:700}.nav a:hover,.nav a.active{background:var(--gold2);color:var(--wine)}.main{flex:1;min-width:0}.page{padding:28px;max-width:1180px;margin:auto}.eyebrow{font-size:11px;font-weight:900;color:var(--wine);text-transform:uppercase;letter-spacing:.14em}.page-title{font-size:35px;color:var(--wine2);margin:6px 0 4px}.intro{color:var(--muted);line-height:1.65;margin:0 0 20px}.hero{position:relative;min-height:360px;border-radius:24px;overflow:hidden;background:linear-gradient(90deg,rgba(76,14,34,.88),rgba(76,14,34,.55),rgba(76,14,34,.22)),url('image/school.png') center/cover;display:flex;align-items:flex-end;padding:34px;color:#fff;box-shadow:var(--shadow)}.hero-content{max-width:820px}.hero-title{font-size:clamp(30px,4vw,52px);line-height:1.08;margin:10px 0 10px;text-shadow:0 3px 12px rgba(0,0,0,.45)}.hero-text{font-size:15px;line-height:1.7;max-width:720px;text-shadow:0 2px 8px rgba(0,0,0,.45)}.hero-school{font-size:13px;color:#ffeab0;font-weight:800;letter-spacing:.03em}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.btn-primary{background:var(--wine);color:#fff}.btn-gold{background:var(--gold);color:#392700}.btn-light{background:#fff;color:var(--wine);border:1px solid var(--line)}.btn-danger{background:#ffe7e7;color:#9f1515}.btn-small{padding:8px 11px;font-size:12px;border-radius:10px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:20px}.stat,.card,.panel,.list-row{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 22px rgba(53,16,27,.07)}.stat{padding:19px}.stat b{display:block;color:var(--wine);font-size:30px}.stat small{color:var(--muted)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:28px 0 12px}.section-head h2{color:var(--wine2);margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:19px}.card h3{margin:10px 0 7px;color:var(--wine2)}.card p{color:var(--muted);line-height:1.6}.icon{font-size:32px}.tag{display:inline-block;background:var(--gold2);color:var(--wine);padding:5px 9px;border-radius:99px;font-size:11px;font-weight:900}.date{font-size:12px;color:var(--muted)}.list{display:grid;gap:12px}.list-row{padding:17px;display:flex;align-items:center;justify-content:space-between;gap:14px}.list-row h3{margin:0 0 4px;color:var(--wine2)}.list-row p{margin:0;color:var(--muted);line-height:1.55}.toolbar{display:flex;gap:10px;margin:15px 0;flex-wrap:wrap}.field{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text)}.field:focus{outline:2px solid rgba(215,169,40,.45);border-color:var(--gold)}.toolbar .search{max-width:520px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}.form-field{font-weight:800;color:var(--wine2);font-size:13px;display:grid;gap:6px}.form-field span{font-weight:600;color:var(--muted);font-size:11px}.muted{color:var(--muted)}.empty{padding:24px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:16px}.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.media{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;overflow:hidden}.media img,.media video{width:100%;height:190px;object-fit:cover;border-radius:12px;background:#1b1115}.media .media-title{font-weight:800;color:var(--wine2);margin:9px 2px 3px}.media .media-desc{font-size:12px;color:var(--muted);margin:0 2px;line-height:1.5}.media-actions{display:flex;gap:7px;margin:10px 2px 2px;flex-wrap:wrap}.principal{display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:center}.avatar{width:130px;height:130px;border-radius:18px;object-fit:cover;background:var(--gold2);border:3px solid var(--gold)}.staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.staff-card{text-align:center}.staff-card .avatar{width:94px;height:94px;border-radius:50%}.subjects{font-weight:800;color:var(--wine)}.notice-card,.event-card,.achievement-card{cursor:pointer}.notice-card:hover,.event-card:hover,.achievement-card:hover{transform:translateY(-2px);transition:.18s;box-shadow:var(--shadow)}.notice-preview{color:var(--muted);line-height:1.5}.unread-dot{width:9px;height:9px;background:#e53935;border-radius:50%;display:inline-block;margin-right:5px}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.admin-tab{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 13px;font-weight:800;color:var(--wine2);cursor:pointer}.admin-tab.active{background:var(--wine);color:#fff;border-color:var(--wine)}.admin-section{margin-bottom:18px}.admin-note{background:#fff7d4;border:1px solid #ead37e;border-radius:14px;padding:13px;color:#654f0e;line-height:1.5}.item-tools{display:flex;gap:7px;flex-wrap:wrap}.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.check{display:flex;align-items:center;gap:8px}.checkbox{width:18px;height:18px}.login-wrap{max-width:440px;margin:40px auto}.login-wrap .panel{padding:26px}.file-name{font-size:12px;color:var(--muted);word-break:break-all}.preview-img{max-width:100%;max-height:300px;display:block;margin:auto;border-radius:14px}.notification-item{display:flex;gap:13px;align-items:flex-start}.notification-item.unread{background:#fffaf0;border-color:#e8cb77}.notification-icon{width:42px;height:42px;border-radius:13px;background:var(--gold2);display:flex;align-items:center;justify-content:center;flex:0 0 auto}.modal{border:0;border-radius:18px;padding:0;width:min(920px,94vw);box-shadow:0 30px 90px rgba(0,0,0,.35)}.modal::backdrop{background:rgba(0,0,0,.72)}.modal-inner{padding:22px;max-height:88vh;overflow:auto}.close{float:right;border:0;background:#eee;color:#444;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer}.modal h2{color:var(--wine);margin:6px 0 10px}.modal-media{display:grid;gap:12px}.modal-media img,.modal-media video{max-width:100%;max-height:420px;width:auto;margin:auto;border-radius:14px;background:#111}.modal-pdf{width:100%;height:68vh;border:1px solid var(--line);border-radius:12px}.toast{position:fixed;right:20px;bottom:25px;background:#24191e;color:#fff;padding:13px 16px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.28);display:none;z-index:100}.toast.show{display:block}.bottom{display:none}.mobile-menu{display:none}.language-screen{position:fixed;inset:0;background:linear-gradient(145deg,var(--wine2),var(--wine));z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}.lang-box{width:min(470px,94vw);background:#fff;border-radius:26px;padding:34px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.3)}.lang-logo{width:92px;height:92px;border-radius:50%;object-fit:cover;background:#fff;border:4px solid var(--gold)}.lang-box h1{color:var(--wine);margin:12px 0 4px}.lang-box button{width:100%;margin-top:10px;padding:14px;border:0;border-radius:12px;font-weight:900;cursor:pointer}.compact .page{padding-top:17px}.high-contrast{filter:contrast(1.15)}.small{font-size:12px}.right{margin-left:auto}.cover-preview{width:100%;height:200px;object-fit:cover;border-radius:15px;border:1px solid var(--line)}
+@media(max-width:1000px){.grid{grid-template-columns:1fr 1fr}.media-grid{grid-template-columns:1fr 1fr}.staff-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.two,.three{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.side{display:none}.mobile-menu{display:block}.bottom{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:60;justify-content:space-around;padding:6px}.bottom a{font-size:10px;color:var(--wine);text-decoration:none;text-align:center;min-width:56px}.bottom span{display:block;font-size:19px}.page{padding:18px 16px 78px}.hero{min-height:330px;padding:24px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.principal{grid-template-columns:1fr;text-align:center}.avatar{margin:auto}.two,.three{grid-template-columns:1fr}.brand b{font-size:16px}}
+@media(max-width:560px){.grid,.media-grid,.staff-grid,.stats{grid-template-columns:1fr}.page-title{font-size:28px}.top{padding:0 11px}.brand small{font-size:10px}.top-btn{padding:9px 10px}.list-row{align-items:flex-start;flex-direction:column}.item-tools{width:100%}.hero-title{font-size:32px}.hero{background-position:60% center}}
+
+/* ===== PMV HOME PAGE / READABILITY ENHANCEMENT ===== */
+body{font-size:15px;line-height:1.6}
+body.bg-active .main{background:rgba(246,244,242,.82)}
+.layout{background:rgba(246,244,242,.88)}
+.page{padding:32px;max-width:1240px}
+.page-title{font-weight:900;letter-spacing:-.02em}
+.intro{font-size:15px;color:#4f454a;font-weight:600}
+.section-head{margin:32px 0 14px}
+.section-head h2{font-size:24px;font-weight:900}
+.card,.panel,.stat,.list-row{background:rgba(255,255,255,.985)}
+.card h3,.list-row h3{font-size:19px;font-weight:900;line-height:1.35}
+.card p,.list-row p{font-size:14px;color:#4b4247;line-height:1.7}
+.date{font-size:12px;color:#5d5257;font-weight:700}
+.hero{min-height:430px;padding:42px;align-items:flex-end;background:linear-gradient(90deg,rgba(55,7,22,.93),rgba(76,14,34,.76),rgba(76,14,34,.30)),url('image/school.png') center/cover}
+.hero-content{max-width:860px;background:rgba(25,8,15,.20);padding:8px 0}
+.hero-school{font-size:15px;color:#ffe8a2;text-shadow:0 2px 5px rgba(0,0,0,.55)}
+.hero-title{font-size:clamp(34px,4.7vw,60px);font-weight:900;text-shadow:0 4px 16px rgba(0,0,0,.68);line-height:1.1}
+.hero-text{font-size:17px;font-weight:700;color:#fff;line-height:1.8;text-shadow:0 3px 10px rgba(0,0,0,.72);max-width:800px}
+.hero .btn{font-size:14px;padding:13px 18px}
+.stats{gap:18px;margin-top:22px}
+.stat{padding:22px;position:relative;overflow:hidden}
+.stat:after{content:"";position:absolute;right:-22px;bottom:-28px;width:90px;height:90px;border-radius:50%;background:rgba(215,169,40,.12)}
+.stat b{font-size:34px;font-weight:900}
+.stat small{font-size:13px;font-weight:800;color:#5d5358}
+.home-grid-2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr);gap:20px;align-items:start}
+.home-feature{background:rgba(255,255,255,.985);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 6px 22px rgba(53,16,27,.07)}
+.home-feature h3{margin:0 0 8px;color:var(--wine2);font-size:21px}
+.home-feature p{margin:0;color:#4b4247;line-height:1.75}
+.home-quick{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.quick-tile{background:linear-gradient(180deg,#fff,#fffaf0);border:1px solid var(--line);border-radius:17px;padding:16px 12px;text-align:center;cursor:pointer;transition:.18s;box-shadow:0 5px 18px rgba(53,16,27,.05)}
+.quick-tile:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(53,16,27,.10)}
+.quick-tile .qicon{font-size:28px;display:block;margin-bottom:7px}
+.quick-tile b{font-size:13px;line-height:1.35;color:var(--wine2)}
+.home-section{margin-top:30px}
+.home-feature .section-head{margin:0 0 12px}
+.home-notices .card,.home-events .card{height:100%}
+.home-media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.home-media-grid .media{height:100%}
+.home-about{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}
+.home-about .home-feature{height:100%}
+.home-contact{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.home-contact .contact-actions{display:flex;gap:9px;flex-wrap:wrap}
+.school-leader-card{display:grid;grid-template-columns:135px 1fr;gap:22px;align-items:center}
+.school-leader-card .avatar{width:135px;height:135px}
+.staff-grid.home-staff{grid-template-columns:repeat(4,1fr)}
+.badge-label{display:inline-flex;align-items:center;gap:6px;background:#f7edf0;color:var(--wine);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900}
+@media(max-width:1050px){.home-quick{grid-template-columns:repeat(3,1fr)}.home-grid-2{grid-template-columns:1fr}.home-about{grid-template-columns:1fr 1fr}.staff-grid.home-staff{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.page{padding:22px 15px 82px}.hero{min-height:420px;padding:26px 22px}.hero-title{font-size:35px}.hero-text{font-size:15px}.home-about{grid-template-columns:1fr}.home-media-grid{grid-template-columns:1fr 1fr}.staff-grid.home-staff{grid-template-columns:1fr 1fr}.school-leader-card{grid-template-columns:1fr;text-align:center}.school-leader-card .avatar{margin:auto}.home-contact{flex-direction:column;align-items:flex-start}}
+@media(max-width:520px){.home-quick{grid-template-columns:repeat(2,1fr)}.home-media-grid,.staff-grid.home-staff{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat b{font-size:28px}}
+
+
+
+/* ===== PMV DARK THEME ===== */
+body.dark-theme{--bg:#111014;--card:#1b191e;--text:#f3eef0;--muted:#bbb0b6;--line:#393239;--shadow:0 10px 30px rgba(0,0,0,.28);background-color:var(--bg);color:var(--text)}
+.dark-theme .layout{background:rgba(17,16,20,.94)}
+.dark-theme .side{background:rgba(27,25,30,.98);border-color:var(--line)}
+.dark-theme .nav a{color:#ddd2d8}.dark-theme .nav a:hover,.dark-theme .nav a.active{background:#3c2c16;color:#ffe6a0}
+.dark-theme .stat,.dark-theme .card,.dark-theme .panel,.dark-theme .list-row,.dark-theme .home-feature,.dark-theme .media,.dark-theme .quick-tile{background:#1b191e;border-color:var(--line);box-shadow:0 8px 25px rgba(0,0,0,.20)}
+.dark-theme .card h3,.dark-theme .list-row h3,.dark-theme .home-feature h3,.dark-theme .section-head h2,.dark-theme .page-title{color:#ffe9a6}
+.dark-theme .card p,.dark-theme .list-row p,.dark-theme .home-feature p,.dark-theme .intro{color:#d0c5ca}
+.dark-theme .stat small,.dark-theme .date,.dark-theme .muted,.dark-theme .file-name{color:#bdb2b8}
+.dark-theme .field{background:#242126;color:#f4eef1;border-color:#4a4147}.dark-theme .field::placeholder{color:#9f949a}
+.dark-theme .admin-tab{background:#242126;color:#f4e7ea;border-color:#4a4147}.dark-theme .admin-tab.active{background:var(--wine);color:#fff}
+.dark-theme .empty{background:#18161a;color:#bdb2b8;border-color:#514850}.dark-theme .btn-light{background:#242126;color:#ffe9a6;border-color:#4a4147}
+.dark-theme .bottom{background:#18161a;border-color:var(--line)}.dark-theme .bottom a{color:#ffe9a6}
+.dark-theme .modal-inner{background:#1b191e;color:var(--text)}.dark-theme .modal h2{color:#ffe9a6}.dark-theme .close{background:#2b282d;color:#fff}
+.dark-theme .language-screen{background:linear-gradient(145deg,#240814,#68152f)}
+.dark-theme .lang-box{background:#1b191e;color:#f4eef1}.dark-theme .lang-box h1{color:#ffe9a6}
+.dark-theme .admin-note{background:#302a18;border-color:#6b5a24;color:#f4df91}
+.dark-theme .badge-label{background:#31272b;color:#ffe9a6}
+.dark-theme .notice-card:hover,.dark-theme .event-card:hover,.dark-theme .achievement-card:hover{box-shadow:0 18px 35px rgba(0,0,0,.35)}
+
+
+/* ===== PMV FINAL FIX: media reliability + black text + dark theme ===== */
+:root{--text:#111;--muted:#3e3e3e}
+body{color:#111;min-height:100vh}
+body.bg-active:before{z-index:0!important;pointer-events:none;background:rgba(0,0,0,.12)!important}
+body.bg-active>.app{position:relative;z-index:1}
+.page-title,.section-head h2,.card h3,.list-row h3,.home-feature h3,.media-title{font-weight:900;color:#111}
+.intro,.card p,.list-row p,.home-feature p,.media-desc,.date,.stat small,.muted{color:#111!important;font-weight:700}
+.media .media-cover{width:100%;height:210px;object-fit:cover;border-radius:12px;background:#ededed;display:block}
+.home-media-grid .media .media-cover{height:220px}
+.admin-preview-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.admin-preview-row img{width:120px;height:120px;object-fit:cover;border-radius:14px;border:2px solid var(--gold);background:#fff}
+.media-clickable{cursor:zoom-in}
+.dark-theme .page-title,.dark-theme .section-head h2,.dark-theme .card h3,.dark-theme .list-row h3,.dark-theme .home-feature h3,.dark-theme .media-title{color:#ffe9a6!important}
+.dark-theme .intro,.dark-theme .card p,.dark-theme .list-row p,.dark-theme .home-feature p,.dark-theme .media-desc,.dark-theme .date,.dark-theme .stat small,.dark-theme .muted{color:#eee!important}
+.dark-theme .media .media-cover{background:#242126}
+.dark-theme .field{color:#fff!important}.readable-text{color:#111;font-weight:600}.dark-theme .readable-text{color:#f1ecef}
+.dark-theme .admin-preview-row img{background:#242126}
+.form-field{color:#111!important}.form-field span{color:#222!important}.card p,.list-row p,.home-feature p,.media-desc,.notice-preview{white-space:pre-line}.stat,.card,.panel,.list-row,.media,.home-feature{color:#111}.hero-text,.hero-title{color:#fff}.btn,.tag,.badge-label,.nav a,.top,.bottom a{font-weight:900}
+.dark-theme .form-field,.dark-theme .form-field span{color:#f1ecef!important}.dark-theme .card,.dark-theme .panel,.dark-theme .list-row,.dark-theme .media,.dark-theme .stat{color:#f1ecef}.dark-theme .empty{color:#ddd!important}
+
+/* ===== PMV TRANSPARENT MAIN / LEFT CATEGORY SIDEBAR ===== */
+.layout{max-width:none;width:100%;background:transparent!important}
+.side{width:235px;flex:0 0 235px;background:rgba(255,255,255,.94)!important;border-right:1px solid rgba(104,21,47,.14);box-shadow:8px 0 28px rgba(53,16,27,.06)}
+.main{background:transparent!important}
+.page{background:transparent!important}
+.home-section{background:transparent!important}
+.home-feature,.stat,.card,.panel,.list-row,.media{background:rgba(255,255,255,.78)!important;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.home-feature,.card,.panel,.list-row,.media{box-shadow:0 8px 24px rgba(53,16,27,.06)}
+.hero{box-shadow:0 12px 32px rgba(53,16,27,.12)}
+body.bg-active .main{background:transparent!important}
+body.bg-active .page{background:transparent!important}
+body.bg-active .home-section{background:transparent!important}
+.dark-theme .layout{background:transparent!important}
+.dark-theme .main{background:transparent!important}
+.dark-theme .home-feature,.dark-theme .stat,.dark-theme .card,.dark-theme .panel,.dark-theme .list-row,.dark-theme .media{background:rgba(27,25,30,.78)!important;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+@media(max-width:820px){.side{display:none}.layout{display:block}.main{width:100%}}
+
+/* ===== PMV READ MORE + DARK TEXT VISIBILITY FIX ===== */
+.read-more-btn{margin-top:9px}
+.card .description-preview{margin:6px 0 0;color:#111;font-weight:600;line-height:1.55}
+.media .media-desc{color:#111;font-weight:600}
+.dark-theme .card .description-preview,.dark-theme .media .media-desc,.dark-theme .notice-preview{color:#f3eef0!important}
+.dark-theme .card p,.dark-theme .list-row p,.dark-theme .home-feature p,.dark-theme .intro,.dark-theme .media-desc{color:#f3eef0!important}
+.dark-theme .form-field,.dark-theme .form-field span,.dark-theme label,.dark-theme .small,.dark-theme .file-name{color:#f3eef0}
+.dark-theme .form-field span,.dark-theme .muted{color:#d8cfd4!important}
+.dark-theme .stat small,.dark-theme .date{color:#d8cfd4!important}
+.dark-theme .subjects{color:#ffe9a6}
+.dark-theme .eyebrow{color:#ffe9a6}
+.dark-theme .tag{background:#4b3a14;color:#ffe9a6}
+.dark-theme .notification-item.unread{background:#302a18;border-color:#6b5a24}
+.dark-theme .notification-item p{color:#f3eef0!important}
+.dark-theme .admin-section,.dark-theme .admin-section *{color:inherit}
+.dark-theme .admin-section .form-field{color:#ffe9a6}
+</style>
+
+<style>
+/* ===== FINAL SIDEBAR + GLASS LAYOUT FIX ===== */
+html,body{min-height:100%;}
+body.bg-active{background-color:#191318;background-image:var(--pmv-bg);background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;}
+body.bg-active:before{content:"";position:fixed;inset:0;background:rgba(20,10,14,.20);z-index:0;pointer-events:none;}
+.app{position:relative;z-index:1;min-height:100vh;background:transparent;}
+.layout{max-width:1500px;background:transparent !important;}
+.main{background:transparent !important;}
+.side{width:236px;background:rgba(255,255,255,.82) !important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-right:1px solid rgba(255,255,255,.55);box-shadow:8px 0 26px rgba(35,8,20,.08);}
+.nav a{transition:.18s ease;}
+.page{background:transparent;}
+.card,.panel,.stat,.list-row,.home-feature,.media,.quick-tile{background:rgba(255,255,255,.86) !important;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);}
+.hero{box-shadow:0 18px 45px rgba(35,8,20,.18);}
+.dark-theme .layout,.dark-theme .main{background:transparent !important;}
+.dark-theme .side{background:rgba(23,21,26,.86) !important;border-color:rgba(255,255,255,.10);}
+.dark-theme .card,.dark-theme .panel,.dark-theme .stat,.dark-theme .list-row,.dark-theme .home-feature,.dark-theme .media,.dark-theme .quick-tile{background:rgba(27,25,30,.88) !important;}
+@media(max-width:820px){.side{display:none}.main{width:100%;}.layout{width:100%;}}
+</style>
+
+
+<style>
+/* ===== FINAL REQUEST: LEFT CATEGORY RAIL + WORKING ADMIN + DARK READABILITY ===== */
+.layout{max-width:none!important;width:100%;margin:0!important;display:flex;align-items:stretch;background:transparent!important}
+.side{width:205px!important;flex:0 0 205px!important;position:sticky!important;left:0;top:72px;height:calc(100vh - 72px)!important;padding:14px 10px!important;background:rgba(255,255,255,.72)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-right:1px solid rgba(104,21,47,.16)!important;box-shadow:6px 0 24px rgba(40,10,22,.06)!important;z-index:20}
+.nav{gap:5px!important}.nav a{display:flex;align-items:center;gap:7px;padding:11px 10px!important;font-size:13px!important;border-radius:10px!important;white-space:nowrap}.nav a.active{box-shadow:inset 3px 0 0 var(--wine)}
+.main{flex:1!important;min-width:0!important;background:transparent!important}.page{max-width:1240px!important;margin:0 auto!important;background:transparent!important}
+/* Keep only the category rail opaque; content remains see-through */
+.card,.panel,.stat,.list-row,.home-feature,.media,.quick-tile{background:rgba(255,255,255,.82)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.dark-theme .side{background:rgba(22,20,25,.78)!important;border-right-color:rgba(255,255,255,.12)!important}.dark-theme .card,.dark-theme .panel,.dark-theme .stat,.dark-theme .list-row,.dark-theme .home-feature,.dark-theme .media,.dark-theme .quick-tile{background:rgba(27,25,30,.88)!important;color:#f5f1f3!important}
+.dark-theme .admin-tab{background:#242126!important;color:#fff!important;border-color:#50464d!important}.dark-theme .admin-tab.active{background:var(--wine)!important;color:#fff!important}.dark-theme .admin-note{color:#fff1b5!important;background:#3a3119!important;border-color:#756124!important}.dark-theme .form-field,.dark-theme .form-field span{color:#fff!important}.dark-theme .field{background:#242126!important;color:#fff!important;border-color:#554b52!important}.dark-theme .field::placeholder{color:#c8bdc3!important}
+/* Admin area must remain fully readable in both themes */
+.admin-tabs{position:relative;z-index:2}.admin-section,.admin-note,.login-wrap{color:var(--text)}.admin-tab{font-weight:900!important}.admin-section h2,.admin-section h3,.panel h2,.panel h3{font-weight:900}
+@media(max-width:820px){.side{display:none!important}.layout{display:block!important}.main{width:100%!important}.mobile-menu{display:block!important}}
+</style>
+</head>
+<body>
+<div id="languageScreen" class="language-screen">
+  <div class="lang-box">
+    <img class="lang-logo" id="langLogo" src="image/logo.png" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 rx=%2240%22 fill=%22%2368152f%22%2F%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2272%22 fill=%22%23d7a928%22%2F%3E%3Ctext x=%22100%22 y=%22120%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2270%22 font-weight=%22900%22 fill=%22%2368152f%22%3EPMV%3C%2Ftext%3E%3C%2Fsvg%3E';">
+    <div class="eyebrow">PMV SCHOOL APP</div>
+    <h1>PMV</h1>
+    <p>ත්‍රී/ත්‍රීඌ පදවි පලුගහවංගුව මහා විද්‍යාලය</p>
+    <h3>භාෂාව තෝරන්න / Select Language</h3>
+    <button class="btn-gold" onclick="chooseLanguage('si')">🇱🇰 සිංහල</button>
+    <button class="btn-primary" onclick="chooseLanguage('en')">🇬🇧 English</button>
+  </div>
+</div>
+
+<div class="app">
+<header class="top">
+  <button class="top-btn mobile-menu" onclick="toggleSide()">☰</button>
+  <img id="topLogo" class="logo" src="image/logo.png" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 rx=%2240%22 fill=%22%2368152f%22%2F%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2272%22 fill=%22%23d7a928%22%2F%3E%3Ctext x=%22100%22 y=%22120%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2270%22 font-weight=%22900%22 fill=%22%2368152f%22%3EPMV%3C%2Ftext%3E%3C%2Fsvg%3E';">
+  <div class="brand"><b id="appTitle">PMV School App</b><small id="schoolTop">ත්‍රී/ත්‍රීඌ පදවි පලුගහවංගුව මහා විද්‍යාලය</small></div>
+  <button class="top-btn" onclick="toggleLanguage()">🌐</button>
+  <button class="top-btn" onclick="go('notifications')">🔔<span id="noticeBadge" class="badge" style="display:none">0</span></button>
+</header>
+<div class="layout">
+  <aside id="side" class="side"><nav id="nav" class="nav"></nav></aside>
+  <main id="main" class="main"></main>
+</div>
+<nav id="bottom" class="bottom"></nav>
+</div>
+<dialog id="modal" class="modal"><div class="modal-inner"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></dialog>
+<div id="toast" class="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB17KaqVyHEtTvapyFv6h4Vop0j8RghioE",
+  authDomain: "pmv-school-web-9b5c2.firebaseapp.com",
+  projectId: "pmv-school-web-9b5c2",
+  storageBucket: "pmv-school-web-9b5c2.firebasestorage.app",
+  messagingSenderId: "230797462508",
+  appId: "1:230797462508:web:9997864ef964a79732cec9",
+  measurementId: "G-GB0RC4C05X"
+};
+try {
+  firebase.initializeApp(firebaseConfig);
+  window.pmvFirestore = firebase.firestore();
+} catch (e) {
+  console.error("PMV Firebase initialization failed:", e);
+  window.pmvFirestore = null;
+}
+</script>
+<script>
+/* ===== PMV CLOUDINARY MEDIA ===== */
+const PMV_CLOUDINARY_CLOUD='pqh0rmpg';
+const PMV_CLOUDINARY_PRESET='PMV-SCHOOL-UPLOD';
+const PMV_CLOUDINARY_ENDPOINTS={image:`https://api.cloudinary.com/v1_1/${PMV_CLOUDINARY_CLOUD}/image/upload`,video:`https://api.cloudinary.com/v1_1/${PMV_CLOUDINARY_CLOUD}/video/upload`,pdf:`https://api.cloudinary.com/v1_1/${PMV_CLOUDINARY_CLOUD}/raw/upload`};
+async function cloudinaryUpload(kind,file){
+  if(!file)throw new Error('No file selected');
+  const max=kind==='video'?100*1024*1024:10*1024*1024;
+  if(file.size>max)throw new Error(kind==='video'?'Video must be 100 MB or smaller.':'File must be 10 MB or smaller.');
+  const endpoint=PMV_CLOUDINARY_ENDPOINTS[kind]||PMV_CLOUDINARY_ENDPOINTS.image;
+  const form=new FormData();form.append('file',file);form.append('upload_preset',PMV_CLOUDINARY_PRESET);
+  const r=await fetch(endpoint,{method:'POST',body:form});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok||!data.secure_url)throw new Error(data.error?.message||'Cloudinary upload failed');
+  return data.secure_url;
+}
+async function cloudinaryImageUpload(file){return cloudinaryUpload('image',file)}
+
+const DEFAULT_SCHOOL={
+  nameSi:'ත්‍රී/ත්‍රීඌ පදවි පලුගහවංගුව මහා විද්‍යාලය',nameEn:'Thri/Thri U Padavi Palugahawanguwa Maha Vidyalaya',
+  mottoSi:'ඉගෙන ගනිමු • වර්ධනය වෙමු • සේවය කරමු',mottoEn:'Learn • Grow • Serve',
+  addressSi:'ශ්‍රී ලංකාව',addressEn:'Sri Lanka',phone:'+94 00 000 0000',email:'info@pmv.school',
+  students:500,teachers:30,established:'',
+  missionSi:'දැනුම, චරිතය හා විශ්වාසය වර්ධනය කරගැනීමට සිසුන්ට ආදරණීය හා ආරක්ෂිත පරිසරයක් ලබා දීම.',
+  missionEn:'To provide a caring environment where students build knowledge, character and confidence.',
+  visionSi:'අනාගතයට සූදානම් වගකීම් සහගත, දක්ෂ හා නිර්මාණශීලී ශිෂ්‍ය පරපුරක් බිහි කිරීම.',
+  visionEn:'To nurture responsible, capable and creative learners for the future.',
+  parentsTitleSi:'දෙමාපිය සහයෝගය',parentsTitleEn:'Family Partnership',
+  parentsTextSi:'නිවස හා පාසල අතර හොඳ සම්බන්ධතාවයක් අපි අගය කරමු. වැඩි විස්තර සඳහා පාසල් කාර්යාලය අමතන්න.',parentsTextEn:'We value open communication between home and school. Please contact the school office for help or information.',
+  principal:{nameSi:'ප්‍රධානීතුමා / ප්‍රධානීතුමිය',nameEn:'Principal',bioSi:'පාසලේ දැක්ම හා මෙහෙවර ඉදිරියට ගෙන යන නායකයා.',bioEn:'Leading the school community and supporting teaching and learning.',photoId:null}
+};
+const DEFAULT_DATA={
+  notices:[
+    {id:1,titleSi:'නව පාසල් වාරයට සාදරයෙන් පිළිගනිමු',titleEn:'Welcome to the New School Term',catSi:'පාසල් පුවත්',catEn:'School News',bodySi:'සියලුම සිසුන් හා දෙමාපියන් නව පාසල් වාරයට සාදරයෙන් පිළිගනිමු. නව වාරයේ සියලුම වැඩසටහන් හා දැනුම්දීම් මෙහි පළ කෙරේ.',bodyEn:'We warmly welcome all students and families to the new school term. Important programs and announcements will be published here.',date:'2026-09-15',createdAt:Date.now()-100000,notify:true},
+    {id:2,titleSi:'දෙමාපිය රැස්වීම',titleEn:'Parent Meeting',catSi:'දෙමාපිය',catEn:'Parents',bodySi:'දෙමාපියන්ට පන්ති භාර ගුරුවරුන් හමුවිය හැකි විශේෂ රැස්වීමක් පැවැත්වේ.',bodyEn:'Parents are invited to meet class teachers at the school.',date:'2026-09-20',createdAt:Date.now()-90000,notify:false}
+  ],
+  events:[
+    {id:1,titleSi:'වාර්ෂික ත්‍යාග ප්‍රදානෝත්සවය',titleEn:'Annual Prize Giving',date:'2026-10-10',time:'9:00 AM',placeSi:'ප්‍රධාන ශාලාව',placeEn:'School Main Hall',descSi:'සිසුන්ගේ කැපවීම හා ජයග්‍රහණ සැමරෙන විශේෂ දිනයකි.',descEn:'Celebrating the dedication and achievements of our students.',photoId:null,videoId:null},
+    {id:2,titleSi:'ක්‍රීඩා උළෙල',titleEn:'Sports Meet',date:'2026-10-22',time:'8:00 AM',placeSi:'පාසල් ක්‍රීඩා පිටිය',placeEn:'School Grounds',descSi:'කණ්ඩායම් හැඟීම, ක්‍රීඩාව හා පාසල් ආත්මය සැමරෙන දිනයකි.',descEn:'A day of teamwork, sport and school spirit.',photoId:null,videoId:null}
+  ],
+  achievements:[
+    {id:1,titleSi:'අධ්‍යාපනික විශිෂ්ටත්වය',titleEn:'Academic Excellence',descSi:'සිසුන්ගේ අධ්‍යාපනික උත්සාහයන් හා ප්‍රගතිය සමරමු.',descEn:'Celebrating academic effort and progress.',photoId:null,videoId:null},
+    {id:2,titleSi:'ක්‍රීඩා හා කණ්ඩායම් වැඩ',titleEn:'Sports & Teamwork',descSi:'විශ්වාසය, මිත්‍රත්වය හා සාධාරණ ක්‍රීඩාව වර්ධනය කරමු.',descEn:'Building confidence, friendship and fair play.',photoId:null,videoId:null}
+  ],
+  teachers:[],gallery:[],videos:[],applications:[]
+};
+
+let school=loadJSON('pmvSchool2',DEFAULT_SCHOOL),db=loadJSON('pmvData2',DEFAULT_DATA),settings=loadJSON('pmvSettings2',{lang:'',compact:false,contrast:false,dark:false,bgId:null,logoId:null,bgData:'',logoData:''}),notifications=loadJSON('pmvNotifications2',[]),logged=false,adminTabName='overview';
+if(!('logoData' in settings))settings.logoData='';
+if(!('bgData' in settings))settings.bgData='';
+if(!('dark' in settings))settings.dark=false;
+school.principal={...clone(DEFAULT_SCHOOL.principal),...(school.principal||{})};
+school.principal.photoData=school.principal.photoData||school.principal.image||school.principal.photo||'';
+db.teachers=(db.teachers||[]).map(x=>({...x,photoData:x.photoData||x.image||x.photo||'',photoId:x.photoId||x.imageId||null,bioSi:x.bioSi||x.descriptionSi||x.description||'',bioEn:x.bioEn||x.descriptionEn||''}));
+db.gallery=(db.gallery||[]).map(x=>({...x,dataUrl:x.dataUrl||x.photoData||x.image||'',mediaId:x.mediaId||x.photoId||null,descSi:x.descSi||x.descriptionSi||x.description||'',descEn:x.descEn||x.descriptionEn||''}));
+db.videos=(db.videos||[]).map(x=>({...x,mediaId:x.mediaId||x.videoId||null,descSi:x.descSi||x.descriptionSi||x.description||'',descEn:x.descEn||x.descriptionEn||''}));
+db.achievements=(db.achievements||[]).map(x=>({...x,photoData:x.photoData||x.image||x.photo||'',photoId:x.photoId||x.imageId||null,videoId:x.videoId||null,descSi:x.descSi||x.descriptionSi||x.description||'',descEn:x.descEn||x.descriptionEn||''}));
+db.events=(db.events||[]).map(x=>({...x,photoData:x.photoData||x.image||x.photo||'',photoId:x.photoId||x.imageId||null,videoId:x.videoId||null,descSi:x.descSi||x.descriptionSi||x.description||'',descEn:x.descEn||x.descriptionEn||''}));
+
+/* ===== PMV CLOUD FIRESTORE SYNC ===== */
+let pmvFirestoreReady=false,pmvFirestoreApplying=false,pmvFirestoreUnsub=null,pmvFirestoreTimer=null;
+const PMV_CLOUD_DOC='pmvSchool/state';
+const pmvMediaFields={
+  school:['principal.photoData','principal.photoId'],
+  teachers:['photoData','photoId'],
+  gallery:['dataUrl','photoData','mediaId'],
+  videos:['dataUrl','photoData','mediaId'],
+  applications:['pdfData','pdfId'],
+  events:['photoData','photoId','videoId'],
+  achievements:['photoData','photoId','videoId']
+};
+function pmvShouldStripMedia(v){return typeof v==='string'&&v.startsWith('data:') || typeof v==='number';}
+function pmvStripMedia(obj,fields){
+  const out=clone(obj||{});
+  for(const path of (fields||[])){
+    const parts=path.split('.');let cur=out;
+    for(let i=0;i<parts.length-1;i++){if(cur&&typeof cur==='object')cur=cur[parts[i]];else cur=null;}
+    if(cur&&typeof cur==='object'){const k=parts[parts.length-1];if(pmvShouldStripMedia(cur[k]))delete cur[k];}
+  }
+  return out;
+}
+function pmvStrip(obj,fields){
+  const out=clone(obj||{});
+  for(const path of (fields||[])){
+    const parts=path.split('.');let cur=out;
+    for(let i=0;i<parts.length-1;i++){if(cur&&typeof cur==='object')cur=cur[parts[i]];else cur=null;}
+    if(cur&&typeof cur==='object')delete cur[parts[parts.length-1]];
+  }
+  return out;
+}
+function pmvCloudPayload(){
+  const cleanDb=clone(db);
+  for(const k of ['teachers','gallery','videos','applications','events','achievements']){
+    if(Array.isArray(cleanDb[k]))cleanDb[k]=cleanDb[k].map(x=>pmvStripMedia(x,pmvMediaFields[k]));
+  }
+  return {school:pmvStripMedia(school,pmvMediaFields.school),db:cleanDb,notifications:clone(notifications),updatedAt:Date.now()};
+}
+function pmvMergeMedia(localItem,remoteItem,fields){
+  const merged={...remoteItem};
+  for(const f of (fields||[])){if(localItem&&localItem[f]!==undefined&&(remoteItem[f]===undefined||remoteItem[f]===null||remoteItem[f]===''))merged[f]=localItem[f];}
+  return merged;
+}
+function pmvMergeRemote(remote){
+  if(remote.school){
+    const localPrincipal=school&&school.principal?school.principal:{};
+    school={...clone(remote.school)};
+    school.principal=pmvMergeMedia(localPrincipal,school.principal||{},['photoData','photoId']);
+  }
+  if(remote.db){
+    const old=clone(db),incoming=clone(remote.db);
+    for(const k of ['teachers','gallery','videos','applications','events','achievements']){
+      if(Array.isArray(incoming[k])){
+        const oldMap=new Map((old[k]||[]).map(x=>[String(x.id),x]));
+        incoming[k]=incoming[k].map(x=>pmvMergeMedia(oldMap.get(String(x.id)),x,pmvMediaFields[k]));
+      }
+    }
+    db={...old,...incoming};
+  }
+  if(Array.isArray(remote.notifications))notifications=clone(remote.notifications);
+}
+function pmvCloudWrite(){
+  if(!window.pmvFirestore||!pmvFirestoreReady||pmvFirestoreApplying)return;
+  clearTimeout(pmvFirestoreTimer);
+  pmvFirestoreTimer=setTimeout(async()=>{
+    try{await window.pmvFirestore.doc(PMV_CLOUD_DOC).set(pmvCloudPayload());}
+    catch(err){console.error('Firestore write failed:',err);toast(t('Cloud save failed. Check Firestore Rules.','Cloud save වුණේ නැහැ. Firestore Rules බලන්න.'));}
+  },250);
+}
+async function pmvInitFirestore(){
+  if(!window.pmvFirestore)return;
+  try{
+    const ref=window.pmvFirestore.doc(PMV_CLOUD_DOC);
+    const snap=await ref.get();
+    if(snap.exists){
+      pmvFirestoreApplying=true;
+      pmvMergeRemote(snap.data()||{});
+      saveAllLocalOnly();
+      pmvFirestoreApplying=false;
+      render();
+    }else{
+      await ref.set(pmvCloudPayload());
+    }
+    pmvFirestoreReady=true;
+    if(pmvFirestoreUnsub)pmvFirestoreUnsub();
+    pmvFirestoreUnsub=ref.onSnapshot(s=>{
+      if(!s.exists||pmvFirestoreApplying)return;
+      pmvFirestoreApplying=true;
+      try{pmvMergeRemote(s.data()||{});saveAllLocalOnly();render();}
+      finally{pmvFirestoreApplying=false;}
+    },err=>console.error('Firestore listener failed:',err));
+    console.log('PMV Firestore connected.');
+  }catch(err){
+    console.error('Firestore connection failed:',err);
+    pmvFirestoreReady=false;
+  }
+}
+
+const navItems=[['home','⌂','Home','මුල් පිටුව'],['notices','▤','Notices','දැනුම්දීම්'],['events','▦','Events','සිදුවීම්'],['parents','♡','Parents','දෙමාපිය'],['applications','⇩','Applications / PDFs','අයදුම්පත් / PDF'],['gallery','▧','Gallery','ගැලරිය'],['videos','▶','Videos','වීඩියෝ'],['staff','♙','Staff','කාර්ය මණ්ඩලය'],['achievements','✦','Achievements','ජයග්‍රහණ'],['about','ⓘ','About School','පාසල ගැන'],['contact','✉','Contact','සම්බන්ධ වන්න'],['notifications','🔔','Notifications','දැනුම්දීම්'],['settings','⚙','Settings','සැකසුම්'],['admin','▣','Admin Panel','පරිපාලක']];
+const t=(en,si)=>settings.lang==='si'?(si||en||''):(en||si||'');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function loadJSON(k,d){try{return JSON.parse(localStorage.getItem(k))||clone(d)}catch{return clone(d)}}
+function saveAllLocalOnly(){try{localStorage.setItem('pmvSchool2',JSON.stringify(school));localStorage.setItem('pmvData2',JSON.stringify(db));localStorage.setItem('pmvSettings2',JSON.stringify(settings));localStorage.setItem('pmvNotifications2',JSON.stringify(notifications));return true}catch(err){console.error('PMV local storage error',err);return false}}
+function saveAll(){const ok=saveAllLocalOnly();if(ok&&!pmvFirestoreApplying)pmvCloudWrite();return ok}
+function toast(msg){const e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500)}
+function go(p){location.hash=p}
+function chooseLanguage(l){settings.lang=l;saveAll();document.getElementById('languageScreen').style.display='none';render()}
+function toggleLanguage(){chooseLanguage(settings.lang==='si'?'en':'si')}
+function toggleSide(){const e=document.getElementById('side');e.style.display=e.style.display==='block'?'none':'block'}
+function currentName(){return t(school.nameEn,school.nameSi)}
+function applyPrefs(){document.body.classList.toggle('compact',!!settings.compact);document.body.classList.toggle('high-contrast',!!settings.contrast);document.body.classList.toggle('dark-theme',!!settings.dark)}
+async function applyMediaSettings(){
+  try{
+    const top=document.getElementById('topLogo'),lang=document.getElementById('langLogo');
+    const logoSrc=settings.logoData || '';
+    if(logoSrc){ if(top)top.src=logoSrc; if(lang)lang.src=logoSrc; }
+    else if(settings.logoId){
+      const obj=await mediaGet(settings.logoId);
+      if(obj){const u=obj.url||((obj.blob)?URL.createObjectURL(obj.blob):''); if(top)top.src=u; if(lang)lang.src=u;}
+    }
+    if(settings.bgData){
+      document.body.style.backgroundImage=`url(\"${settings.bgData.replace(/\"/g,'%22')}\")`;
+      document.body.classList.add('bg-active');
+    }else if(settings.bgId){
+      const obj=await mediaGet(settings.bgId);
+      if(obj){const u=obj.url||((obj.blob)?URL.createObjectURL(obj.blob):'');document.body.style.backgroundImage=`url(\"${u}\")`;document.body.classList.add('bg-active');}
+    }else{
+      document.body.classList.remove('bg-active');
+      document.body.style.backgroundImage='';
+    }
+  }catch(err){console.warn('PMV media settings:',err)}
+}
+function unreadCount(){return notifications.filter(n=>!n.read).length}
+function updateBadge(){const e=document.getElementById('noticeBadge'),n=unreadCount();e.textContent=n>99?'99+':n;e.style.display=n?'flex':'none'}
+function nav(){document.getElementById('nav').innerHTML=navItems.map(n=>`<a href="#${n[0]}" class="${location.hash.slice(1)===n[0]?'active':''}">${n[1]} &nbsp;${t(n[2],n[3])}${n[0]==='notifications'&&unreadCount()?` <span style="float:right;background:#e53935;color:white;border-radius:999px;padding:2px 6px;font-size:10px">${unreadCount()}</span>`:''}</a>`).join('');document.getElementById('bottom').innerHTML=navItems.slice(0,5).map(n=>`<a href="#${n[0]}"><span>${n[1]}</span>${t(n[2],n[3])}</a>`).join('');document.getElementById('schoolTop').textContent=currentName();updateBadge()}
+function heading(en,si,descEn,descSi=descEn){return `<div class="eyebrow">PMV SCHOOL APP</div><h1 class="page-title">${t(en,si)}</h1><p class="intro">${t(descEn,descSi)}</p>`}
+function empty(txt){return `<div class="empty">${esc(txt)}</div>`}
+function shorten(s,n=115){s=String(s||'');return esc(s.length>n?s.slice(0,n)+'…':s)}
+
+function home(){
+const teachers=db.teachers;
+const latestNotices=db.notices.slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0)).slice(0,3);
+const upcomingEvents=db.events.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).slice(0,3);
+const latestAchievements=db.achievements.slice(0,3);
+const latestPhotos=db.gallery.slice(0,3);
+return `<div class="page home-page">
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-school">${esc(currentName())}</div>
+    <h1 class="hero-title">${esc(t(school.mottoEn,school.mottoSi))}</h1>
+    <p class="hero-text">${esc(t(school.missionEn,school.missionSi))}</p>
+    <div class="toolbar" style="margin:15px 0 0">
+      <button class="btn btn-gold" onclick="go('notices')">📢 ${t('Latest Notices','අලුත් දැනුම්දීම්')}</button>
+      <button class="btn btn-light" onclick="go('staff')">👨‍🏫 ${t('Meet the Staff','ගුරු මණ්ඩලය')}</button>
+    </div>
+  </div>
+</section>
+<div class="stats">
+  <div class="stat"><b>${esc(school.students)}</b><small>👨‍🎓 ${t('Students','සිසුන්')}</small></div>
+  <div class="stat"><b>${db.teachers.length||esc(school.teachers)}</b><small>👩‍🏫 ${t('Teachers','ගුරුවරුන්')}</small></div>
+  <div class="stat"><b>${db.events.length}</b><small>📅 ${t('Events','සිදුවීම්')}</small></div>
+  <div class="stat"><b>${db.notices.length}</b><small>🔔 ${t('Notices','දැනුම්දීම්')}</small></div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('Quick Access','ඉක්මන් ප්‍රවේශය')}</h2><span class="badge-label">PMV</span></div>
+  <div class="home-quick">
+    ${[['📢','Notices','දැනුම්දීම්','notices'],['📅','Events','සිදුවීම්','events'],['📄','PDF Forms','PDF අයදුම්පත්','applications'],['🖼️','Gallery','ගැලරිය','gallery'],['🎥','Videos','වීඩියෝ','videos'],['🏆','Achievements','ජයග්‍රහණ','achievements']].map(x=>`<div class="quick-tile" onclick="go('${x[3]}')"><span class="qicon">${x[0]}</span><b>${t(x[1],x[2])}</b></div>`).join('')}
+  </div>
+</div>
+<div class="home-section home-grid-2">
+  <div class="home-feature home-notices">
+    <div class="section-head"><h2>${t('Latest Notices','අලුත්ම දැනුම්දීම්')}</h2><button class="btn btn-light btn-small" onclick="go('notices')">${t('View all','සියල්ල')} →</button></div>
+    <div class="grid">${latestNotices.map(noticeCard).join('')||empty(t('No notices yet.','තවම දැනුම්දීම් නැත.'))}</div>
+  </div>
+  <div class="home-feature">
+    <div class="section-head"><h2>${t('School Vision','පාසලේ දැක්ම')}</h2></div>
+    <p>${esc(t(school.visionEn,school.visionSi))}</p>
+    <div style="height:12px"></div>
+    <span class="tag">🎯 ${t('Mission','මෙහෙවර')}</span>
+    <p style="margin-top:8px">${esc(t(school.missionEn,school.missionSi))}</p>
+    <div style="margin-top:14px"><button class="btn btn-primary btn-small" onclick="go('about')">${t('About School','පාසල ගැන')} →</button></div>
+  </div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('School Leadership','පාසල් නායකත්වය')}</h2><button class="btn btn-light btn-small" onclick="go('staff')">${t('View staff','කාර්ය මණ්ඩලය')} →</button></div>
+  <div class="panel school-leader-card" style="padding:22px">
+    ${school.principal.photoData?`<img class="avatar" src="${esc(school.principal.photoData)}" alt="Principal" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 rx=%2230%22 fill=%22%2368152f%22%2F%3E%3Ccircle cx=%22100%22 cy=%2280%22 r=%2238%22 fill=%22%23d7a928%22%2F%3E%3Crect x=%2250%22 y=%22125%22 width=%22100%22 height=%2250%22 rx=%2225%22 fill=%22%23d7a928%22%2F%3E%3C%2Fsvg%3E';">`:school.principal.photoId?`<img class="avatar" src="" data-media-id="${school.principal.photoId}" alt="Principal">`:`<div class="avatar" style="display:flex;align-items:center;justify-content:center;font-size:48px">👤</div>`}
+    <div>
+      <div class="eyebrow">${t('Principal','විදුහල්පති')}</div>
+      <h2 style="color:var(--wine);margin:5px 0 8px;font-weight:900">${esc(t(school.principal.nameEn,school.principal.nameSi))}</h2>
+      <p style="margin:0 0 14px;font-size:15px">${esc(t(school.principal.bioEn,school.principal.bioSi))}</p>
+      <button class="btn btn-primary btn-small" onclick="go('staff')">${t('Principal & Teachers','විදුහල්පති හා ගුරුවරු')} →</button>
+    </div>
+  </div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('Our Teachers','අපේ ගුරුවරු')}</h2><span class="date">${teachers.length} ${t('profiles','පැතිකඩ')}</span></div>
+  <div class="staff-grid home-staff">${teachers.length?teachers.slice(0,8).map(teacherCard).join(''):empty(t('Teachers have not been added yet. Admin can add them.','ගුරුවරු තවම ඇතුළත් කර නැත. Admin මගින් එකතු කළ හැකිය.'))}</div>
+  ${teachers.length>8?`<div style="text-align:center;margin-top:15px"><button class="btn btn-light" onclick="go('staff')">${t('View all teachers','සියලු ගුරුවරු බලන්න')} →</button></div>`:''}
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('Upcoming Events','ඉදිරි සිදුවීම්')}</h2><button class="btn btn-light btn-small" onclick="go('events')">${t('View all','සියල්ල')} →</button></div>
+  <div class="grid home-events">${upcomingEvents.map(eventCard).join('')||empty(t('No events yet.','තවම සිදුවීම් නැත.'))}</div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('Achievements','ජයග්‍රහණ')}</h2><button class="btn btn-light btn-small" onclick="go('achievements')">${t('View all','සියල්ල')} →</button></div>
+  <div class="grid">${latestAchievements.map(achievementCard).join('')||empty(t('No achievements yet.','තවම ජයග්‍රහණ නැත.'))}</div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('School Gallery','පාසල් ගැලරිය')}</h2><button class="btn btn-light btn-small" onclick="go('gallery')">${t('Open gallery','ගැලරිය')} →</button></div>
+  <div class="home-media-grid">${latestPhotos.map(x=>mediaCard(x,'photo')).join('')||empty(t('No photos yet.','තවම ඡායාරූප නැත.'))}</div>
+</div>
+<div class="home-section">
+  <div class="section-head"><h2>${t('About Our School','අපගේ පාසල ගැන')}</h2></div>
+  <div class="home-about">
+    <div class="home-feature"><div class="icon">🎯</div><h3>${t('Mission','මෙහෙවර')}</h3><p>${esc(t(school.missionEn,school.missionSi))}</p></div>
+    <div class="home-feature"><div class="icon">🌟</div><h3>${t('Vision','දැක්ම')}</h3><p>${esc(t(school.visionEn,school.visionSi))}</p></div>
+    <div class="home-feature"><div class="icon">🏫</div><h3>${t('School','පාසල')}</h3><p>${esc(currentName())}</p><p class="date" style="margin-top:8px">${esc(t(school.addressEn,school.addressSi))}</p></div>
+  </div>
+</div>
+<div class="home-section">
+  <div class="home-feature home-contact">
+    <div><div class="eyebrow">PMV SCHOOL</div><h2 style="margin:4px 0;color:var(--wine2)">${t('Contact School','පාසල අමතන්න')}</h2><p>${esc(t(school.addressEn,school.addressSi))}<br>☎ ${esc(school.phone)}<br>✉ ${esc(school.email)}</p></div>
+    <div class="contact-actions"><button class="btn btn-primary" onclick="go('contact')">✉ ${t('Contact','සම්බන්ධ වන්න')}</button><button class="btn btn-gold" onclick="go('parents')">👨‍👩‍👧 ${t('Parents','දෙමාපිය')}</button></div>
+  </div>
+</div>
+</div>`
+}
+function teacherCard(x){return `<article class="card staff-card">${x.photoData?`<img class="avatar" src="${esc(x.photoData)}" alt="Teacher">`:x.photoId?`<img class="avatar" src="" data-media-id="${x.photoId}" alt="Teacher">`:`<div class="avatar" style="margin:auto;display:flex;align-items:center;justify-content:center;font-size:34px">👨‍🏫</div>`}<h3>${esc(t(x.nameEn,x.nameSi))}</h3><div class="subjects">${esc(t(x.subjectEn,x.subjectSi))}</div><button class="btn btn-gold btn-small read-more-btn" onclick="openTeacher(${x.id})">${t('Read more','තව කියවන්න')} →</button></article>`}
+function noticeCard(n){return `<article class="card notice-card"><div style="display:flex;justify-content:space-between;gap:10px"><span class="tag">${esc(t(n.catEn,n.catSi))}</span>${n.notify?'<span class="unread-dot" title="Notification"></span>':''}</div><h3>${esc(t(n.titleEn,n.titleSi))}</h3><p class="description-preview">${shorten(t(n.bodyEn,n.bodySi),120)}</p><span class="date">${esc(n.date)}</span><br><button class="btn btn-gold btn-small read-more-btn" onclick="openNotice(${n.id})">${t('Read more','තව කියවන්න')} →</button></article>`}
+function eventCard(e){return `<article class="card event-card">${e.photoData?`<img class="media-cover" src="${esc(e.photoData)}" alt="Event">`:''}<span class="tag">${esc(e.date)}</span><h3>${esc(t(e.titleEn,e.titleSi))}</h3><p class="description-preview">${esc(t(e.placeEn,e.placeSi))} · ${esc(e.time)}</p>${e.photoData||e.photoId||e.videoId?`<span class="date">📷/🎥 ${t('Media attached','මාධ්‍ය එක්කර ඇත')}</span>`:''}<br><button class="btn btn-gold btn-small read-more-btn" onclick="openEvent(${e.id})">${t('Read more','තව කියවන්න')} →</button></article>`}
+function achievementCard(a){return `<article class="card achievement-card">${a.photoData?`<img class="media-cover" src="${esc(a.photoData)}" alt="Achievement">`:a.photoId?`<img class="media-cover" src="" data-media-id="${a.photoId}" alt="Achievement">`:`<div class="icon">🏆</div>`}<h3>${esc(t(a.titleEn,a.titleSi))}</h3><p class="description-preview">${shorten(t(a.descEn,a.descSi),140)}</p>${a.videoId?'<span class="date">🎥 Video</span>':''}<br><button class="btn btn-gold btn-small read-more-btn" onclick="openAchievement(${a.id})">${t('Read more','තව කියවන්න')} →</button></article>`}
+
+function notices(){return `<div class="page">${heading('Notices','දැනුම්දීම්','School news, reminders and messages.','පාසල් පුවත්, මතක් කිරීම් හා වැදගත් දැනුම්දීම්.')}<div class="toolbar"><input class="field search" id="noticeSearch" placeholder="${t('Search notices...','දැනුම්දීම් සොයන්න...')}" oninput="filterText(this,'noticeList')"></div><div id="noticeList" class="grid">${db.notices.map(noticeCard).join('')||empty(t('No notices yet.','දැනුම්දීම් නැත.'))}</div></div>`}
+function events(){return `<div class="page">${heading('Events','සිදුවීම්','School gatherings, celebrations and important dates.','පාසල් උත්සව, වැඩසටහන් හා වැදගත් දින.')}<div class="grid">${db.events.map(eventCard).join('')||empty(t('No events yet.','සිදුවීම් නැත.'))}</div></div>`}
+function parents(){return `<div class="page">${heading('For Parents','දෙමාපියන් සඳහා','Helpful information for families supporting their children.','දරුවන්ට සහය වන දෙමාපියන් සඳහා වැදගත් තොරතුරු.')}<div class="grid">${[['📅','Calendar','දින දර්ශනය','events'],['📢','Notices','දැනුම්දීම්','notices'],['📄','Forms & PDFs','අයදුම්පත් හා PDF','applications'],['✉️','Contact School','පාසල අමතන්න','contact']].map(x=>`<article class="card"><div class="icon">${x[0]}</div><h3>${t(x[1],x[2])}</h3><button class="btn btn-primary btn-small" onclick="go('${x[3]}')">${t('Open','විවෘත කරන්න')} →</button></article>`).join('')}</div><div class="section-head"><h2>${esc(t(school.parentsTitleEn||'Family Partnership',school.parentsTitleSi||'පවුල් සහභාගීත්වය'))}</h2></div><div class="panel" style="padding:20px"><p>${esc(t(school.parentsTextEn||'We value open communication between home and school. Please contact the school office for help or information.',school.parentsTextSi||'නිවස හා පාසල අතර හොඳ සම්බන්ධතාවයක් අපි අගය කරමු. වැඩි විස්තර සඳහා පාසල් කාර්යාලය අමතන්න.'))}</p><button class="btn btn-primary" onclick="go('contact')">${t('Contact the office','කාර්යාලය අමතන්න')}</button></div></div>`}
+function applications(){return `<div class="page">${heading('Applications & PDFs','අයදුම්පත් සහ PDF','Open, preview, download or print approved school forms.','අනුමත පාසල් අයදුම්පත් විවෘත, පෙරදසුන්, download හෝ print කරන්න.')}<div class="list">${db.applications.length?db.applications.map(a=>`<div class="list-row"><div><h3>${esc(t(a.titleEn,a.titleSi))}</h3><p>${esc(t(a.descEn,a.descSi))}</p><div class="file-name">${esc(a.fileName||'PDF')}</div></div><div class="item-tools"><button class="btn btn-primary btn-small" onclick="openPdf(${a.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-gold btn-small" onclick="downloadPdf(${a.id})">${t('Download','Download')}</button><button class="btn btn-light btn-small" onclick="printPdf(${a.id})">${t('Print','Print')}</button></div></div>`).join(''):empty(t('No PDF forms added yet. Admin can add them.','PDF අයදුම්පත් තවම එකතු කර නැත. Admin මගින් එකතු කළ හැකිය.'))}</div></div>`}
+function gallery(){return `<div class="page">${heading('School Gallery','පාසල් ගැලරිය','Photos added by the school admin.','පාසල් Admin විසින් එක් කළ ඡායාරූප.')}<div id="galleryGrid" class="media-grid">${db.gallery.length?db.gallery.map(x=>mediaCard(x,'photo')).join(''):empty(t('No photos yet.','ඡායාරූප නැත.'))}</div></div>`}
+function videos(){return `<div class="page">${heading('School Videos','පාසල් වීඩියෝ','Videos added by the school admin.','පාසල් Admin විසින් එක් කළ වීඩියෝ.')}<div class="media-grid">${db.videos.length?db.videos.map(x=>mediaCard(x,'video')).join(''):empty(t('No videos yet.','වීඩියෝ නැත.'))}</div></div>`}
+function mediaCard(x,kind){const src=x.dataUrl||x.photoData||'';const fullDesc=t(x.descEn,x.descSi)||'';const shortDesc=shorten(fullDesc,120);return `<div class="media media-clickable"><div id="media-${kind}-${x.id}" data-media-card="${kind}" data-id="${x.id}" onclick="openMediaItem('${kind}',${x.id})">${src?`<img class="media-cover" src="${esc(src)}" alt="${esc(t(x.titleEn,x.titleSi))}" loading="lazy">`:`<div class="empty">${kind==='photo'?t('Photo loading...','Photo load වෙමින්...'):t('Video loading...','Video load වෙමින්...')}</div>`}</div><div class="media-title">${esc(t(x.titleEn,x.titleSi))}</div>${fullDesc?`<p class="media-desc description-preview">${esc(shortDesc)}</p><button class="btn btn-gold btn-small read-more-btn" onclick="event.stopPropagation();openMediaItem('${kind}',${x.id})">${t('Read more','තව කියවන්න')} →</button>`:''}<div class="media-actions"><button class="btn btn-primary btn-small" onclick="event.stopPropagation();openMediaItem('${kind}',${x.id})">${kind==='photo'?t('Open Photo','ඡායාරූපය විවෘත කරන්න'):t('Open Video','වීඩියෝව විවෘත කරන්න')}</button></div></div>`}
+function staff(){return `<div class="page">${heading('Our Staff','කාර්ය මණ්ඩලය','Meet our principal and teachers.','අපගේ විදුහල්පති හා ගුරු මණ්ඩලය හඳුනා ගන්න.')}<div class="section-head"><h2>${t('Principal','විදුහල්පති')}</h2></div><div class="panel principal" style="padding:20px">${school.principal.photoData?`<img class="avatar" src="${esc(school.principal.photoData)}" alt="Principal">`:school.principal.photoId?`<img class="avatar" src="" data-media-id="${school.principal.photoId}" alt="Principal">`:`<div class="avatar" style="display:flex;align-items:center;justify-content:center;font-size:42px">👤</div>`}<div><div class="eyebrow">${t('School Leader','පාසල් නායකත්වය')}</div><h2 style="color:var(--wine);margin:5px 0">${esc(t(school.principal.nameEn,school.principal.nameSi))}</h2><p style="white-space:pre-line">${esc(t(school.principal.bioEn,school.principal.bioSi))}</p></div></div><div class="section-head"><h2>${t('Teachers','ගුරුවරු')}</h2><span class="date">${db.teachers.length} ${t('teachers','ගුරුවරු')}</span></div><div class="staff-grid">${db.teachers.length?db.teachers.map(teacherCard).join(''):empty(t('No teacher profiles yet.','ගුරු පැතිකඩ නැත.'))}</div></div>`}
+function achievements(){return `<div class="page">${heading('Achievements','ජයග්‍රහණ','Celebrate achievements with a photo, video and description.','ඡායාරූප, වීඩියෝ හා විස්තර සමඟ පාසල් ජයග්‍රහණ.')}<div class="grid">${db.achievements.map(achievementCard).join('')||empty(t('No achievements yet.','ජයග්‍රහණ නැත.'))}</div></div>`}
+function about(){return `<div class="page">${heading('About School','පාසල ගැන','School mission, vision and key information.','පාසලේ මෙහෙවර, දැක්ම හා වැදගත් තොරතුරු.')}<div class="grid"><article class="card"><div class="icon">🎯</div><h3>${t('Mission','මෙහෙවර')}</h3><p>${esc(t(school.missionEn,school.missionSi))}</p></article><article class="card"><div class="icon">🌟</div><h3>${t('Vision','දැක්ම')}</h3><p>${esc(t(school.visionEn,school.visionSi))}</p></article><article class="card"><div class="icon">🏫</div><h3>${t('School','පාසල')}</h3><p>${esc(currentName())}</p></article></div><div class="section-head"><h2>${t('Contact details','සම්බන්ධතා විස්තර')}</h2></div><div class="panel" style="padding:20px"><p>${esc(t(school.addressEn,school.addressSi))}<br>☎ ${esc(school.phone)}<br>✉ ${esc(school.email)}</p></div></div>`}
+function contact(){return `<div class="page">${heading('Contact School','පාසල අමතන්න','Send a message from this device.','මෙම උපාංගයෙන් පණිවිඩයක් යවන්න.')}<form class="panel" style="padding:20px;display:grid;gap:12px" onsubmit="submitContact(event)"><input class="field" id="cname" required placeholder="${t('Name','නම')}"><input class="field" id="cphone" placeholder="${t('Phone','දුරකථන අංකය')}"><input class="field" id="cemail" type="email" required placeholder="${t('Email','Email')}"><textarea class="field" id="cmsg" rows="6" required placeholder="${t('Message','පණිවිඩය')}"></textarea><button class="btn btn-primary">${t('Save Message','පණිවිඩය සුරකින්න')}</button></form></div>`}
+function submitContact(e){e.preventDefault();toast(t('Message saved on this device.','පණිවිඩය මෙම උපාංගයේ සුරැකිණි.'));e.target.reset()}
+function notificationsPage(){const list=notifications.slice().sort((a,b)=>b.time-a.time);return `<div class="page">${heading('Notifications','දැනුම්දීම්','See new school updates and notice alerts.','අලුත් පාසල් update හා notice දැනුම්දීම් බලන්න.')}<div class="toolbar"><button class="btn btn-gold" onclick="markAllRead()">${t('Mark all as read','සියල්ල කියවා ඇත ලෙස සලකුණු කරන්න')}</button><button class="btn btn-light" onclick="clearNotifications()">${t('Clear notifications','දැනුම්දීම් හිස් කරන්න')}</button></div><div class="list">${list.length?list.map(n=>`<div class="list-row notification-item ${n.read?'':'unread'}"><div class="notification-icon">${n.type==='notice'?'📢':'🔔'}</div><div style="flex:1"><b>${esc(t(n.titleEn,n.titleSi))}</b><p>${esc(t(n.textEn,n.textSi))}</p><span class="date">${new Date(n.time).toLocaleString()}</span></div><button class="btn btn-light btn-small" onclick="openNotification(${n.id})">${t('Open','විවෘත කරන්න')}</button></div>`).join(''):empty(t('No notifications.','දැනුම්දීම් නැත.'))}</div></div>`}
+function openNotification(id){const n=notifications.find(x=>x.id===id);if(!n)return;n.read=true;saveAll();if(n.refType==='notice')openNotice(n.refId);else render()}
+function markAllRead(){notifications.forEach(n=>n.read=true);saveAll();render();toast(t('All notifications marked as read.','සියලු දැනුම්දීම් කියවා ඇත ලෙස සලකුණු කළා.'))}
+function clearNotifications(){notifications=[];saveAll();render();toast(t('Notifications cleared.','දැනුම්දීම් හිස් කළා.'))}
+function settingsPage(){return `<div class="page">${heading('Settings','සැකසුම්','Change language and appearance preferences.','භාෂාව හා පෙනුම වෙනස් කරන්න.')}<div class="panel" style="padding:20px;display:grid;gap:14px"><div class="admin-note">🌙 ${t('Dark Theme changes the full app appearance. Normal mode uses clear black text.','Dark Theme එකෙන් සම්පූර්ණ app එකේ පෙනුම මාරු වේ. Normal mode එකේ text තද කළු පැහැයෙන් පෙනේ.')}</div><button class="btn btn-gold" onclick="toggleLanguage()">🌐 ${t('Switch Language','භාෂාව මාරු කරන්න')}</button><label class="check"><input class="checkbox" type="checkbox" ${settings.dark?'checked':''} onchange="settings.dark=this.checked;saveAll();render()"> 🌙 ${t('Dark theme','Dark Theme')}</label><label class="check"><input class="checkbox" type="checkbox" ${settings.compact?'checked':''} onchange="settings.compact=this.checked;saveAll();render()"> ${t('Compact layout','සංක්ෂිප්ත layout')}</label><label class="check"><input class="checkbox" type="checkbox" ${settings.contrast?'checked':''} onchange="settings.contrast=this.checked;saveAll();render()"> ${t('High contrast','වැඩි contrast')}</label></div></div>`}
+
+function admin(){if(!logged)return `<div class="page"><div class="login-wrap"><div class="panel"><div class="eyebrow">PMV</div><h1 style="color:var(--wine)">${t('Admin Login','පරිපාලක Login')}</h1><p class="muted">${t('Manage everything in the app from here.','App එකේ සියලු දේ මෙතැනින් manage කරන්න.')}</p><form style="display:grid;gap:12px" onsubmit="login(event)"><input class="field" id="adminUser" required placeholder="Username"><input class="field" id="adminPass" required type="password" placeholder="Password"><button class="btn btn-primary">${t('Login','Login')}</button></form></div></div></div>`;
+return `<div class="page">${heading('Admin Panel','පරිපාලක පැනලය','Edit school information, notices, events, media, teachers, PDFs, logo and background.','පාසලේ සියලුම තොරතුරු, notices, events, media, teachers, PDFs, logo හා background වෙනස් කරන්න.')}<div class="admin-note">🔐 ${t('Text changes sync with Firebase; photos, videos and PDFs are uploaded to Cloudinary for everyone.','Text changes Firebase සමඟ sync වේ; photos, videos සහ PDFs Cloudinary වෙත upload වී හැමෝටම පෙනේ.')}</div><div class="admin-tabs">${[['overview','Overview','සාරාංශය'],['school','School & Home','පාසල හා මුල් පිටුව'],['parents','Parents / Contact','දෙමාපිය / Contact'],['principal','Principal','විදුහල්පති'],['teachers','Teachers','ගුරුවරු'],['notices','Notices','දැනුම්දීම්'],['events','Events','සිදුවීම්'],['achievements','Achievements','ජයග්‍රහණ'],['gallery','Photos','ඡායාරූප'],['videos','Videos','වීඩියෝ'],['applications','PDFs','PDF'],['appearance','Logo / Background','Logo / Background']].map(a=>`<button class="admin-tab ${adminTabName===a[0]?'active':''}" onclick="setAdminTab('${a[0]}')">${t(a[1],a[2])}</button>`).join('')}</div><div id="adminArea"></div></div>`}
+function setAdminTab(n){adminTabName=n;render();setTimeout(()=>renderAdminArea(),0)}
+async function renderAdminArea(){if(location.hash.slice(1)!=='admin'||!logged)return;const a=document.getElementById('adminArea');if(!a)return;const fn={overview:adminOverview,school:adminSchool,parents:adminParents,principal:adminPrincipal,teachers:adminTeachers,notices:adminNotices,events:adminEvents,achievements:adminAchievements,gallery:adminGallery,videos:adminVideos,applications:adminApplications,appearance:adminAppearance}[adminTabName]||adminOverview;const html=await Promise.resolve(fn());a.innerHTML=html+`<div class="admin-note" style="margin-top:12px">${pmvFirestoreReady?t('☁ Online sync: Firestore connected.','☁ Online sync: Firestore connected.'):t('☁ Online sync is connecting...','☁ Online sync connect වෙමින්...')}</div>`;hydrateMedia(a)}
+function adminOverview(){return `<div class="stats"><div class="stat"><b>${db.notices.length}</b><small>${t('Notices','දැනුම්දීම්')}</small></div><div class="stat"><b>${db.events.length}</b><small>${t('Events','සිදුවීම්')}</small></div><div class="stat"><b>${db.teachers.length}</b><small>${t('Teachers profiles','ගුරු පැතිකඩ')}</small></div><div class="stat"><b>${db.gallery.length+db.videos.length}</b><small>${t('Media items','Media')}</small></div></div><div class="section-head"><h2>${t('What you can manage','ඔබට manage කළ හැකි දේ')}</h2></div><div class="grid">${[['🏫','School & Home','පාසල හා මුල් පිටුව','school'],['👨‍👩‍👧','Parents / Contact','දෙමාපිය / Contact','parents'],['👤','Principal','විදුහල්පති','principal'],['👨‍🏫','Teachers','ගුරුවරු','teachers'],['📢','Notices','දැනුම්දීම්','notices'],['📅','Events + Photo/Video','සිදුවීම් + Photo/Video','events'],['🏆','Achievements + Photo/Video','ජයග්‍රහණ + Photo/Video','achievements'],['📷','Photos','ඡායාරූප','gallery'],['🎥','Videos','වීඩියෝ','videos'],['📄','PDFs','PDF','applications'],['🎨','Logo / Background','Logo / Background','appearance']].map(x=>`<article class="card"><div class="icon">${x[0]}</div><h3>${t(x[1],x[2])}</h3><button class="btn btn-primary btn-small" onclick="setAdminTab('${x[3]}')">${t('Manage','Manage')} →</button></article>`).join('')}</div>`}
+function langInputs(prefix,labelSi,labelEn,valSi='',valEn=''){return `<div class="two"><label class="form-field">${esc(labelSi)}<span>සිංහල</span><input class="field" id="${prefix}Si" value="${esc(valSi)}"></label><label class="form-field">${esc(labelEn)}<span>English</span><input class="field" id="${prefix}En" value="${esc(valEn)}"></label></div>`}
+function textareas(prefix,labelSi,labelEn,valSi='',valEn=''){return `<div class="two"><label class="form-field">${esc(labelSi)}<span>සිංහල</span><textarea class="field" id="${prefix}Si" rows="5">${esc(valSi)}</textarea></label><label class="form-field">${esc(labelEn)}<span>English</span><textarea class="field" id="${prefix}En" rows="5">${esc(valEn)}</textarea></label></div>`}
+function adminSchool(){return `<div class="panel" style="padding:20px"><form onsubmit="saveSchool(event)" style="display:grid;gap:14px">${langInputs('sName','පාසල් නම','School Name',school.nameSi,school.nameEn)}${langInputs('sMotto','මෝටෝ','Motto',school.mottoSi,school.mottoEn)}${langInputs('sAddress','ලිපිනය','Address',school.addressSi,school.addressEn)}<div class="two"><label class="form-field">${t('Phone','දුරකථන')}<input class="field" id="sPhone" value="${esc(school.phone)}"></label><label class="form-field">Email<input class="field" id="sEmail" value="${esc(school.email)}"></label></div><div class="two"><label class="form-field">${t('Student count','සිසුන් ගණන')}<input class="field" id="sStudents" type="number" value="${esc(school.students)}"></label><label class="form-field">${t('Teacher count','ගුරුවරු ගණන')}<input class="field" id="sTeachers" type="number" value="${esc(school.teachers)}"></label></div>${textareas('sMission','මෙහෙවර','Mission',school.missionSi,school.missionEn)}${textareas('sVision','දැක්ම','Vision',school.visionSi,school.visionEn)}${langInputs('sParentsTitle','දෙමාපිය කොටසේ මාතෘකාව','Parents Section Title',school.parentsTitleSi||'පවුල් සහභාගීත්වය',school.parentsTitleEn||'Family Partnership')}${textareas('sParentsText','දෙමාපිය කොටසේ විස්තර','Parents Section Text',school.parentsTextSi||'',school.parentsTextEn||'')}<button class="btn btn-primary">${t('Save School & Home','පාසල හා මුල් පිටුව Save කරන්න')}</button></form></div>`}
+function saveSchool(e){e.preventDefault();school.nameSi=sNameSi.value;school.nameEn=sNameEn.value;school.mottoSi=sMottoSi.value;school.mottoEn=sMottoEn.value;school.addressSi=sAddressSi.value;school.addressEn=sAddressEn.value;school.phone=sPhone.value;school.email=sEmail.value;school.students=Number(sStudents.value)||0;school.teachers=Number(sTeachers.value)||0;school.missionSi=sMissionSi.value;school.missionEn=sMissionEn.value;school.visionSi=sVisionSi.value;school.visionEn=sVisionEn.value;school.parentsTitleSi=sParentsTitleSi.value;school.parentsTitleEn=sParentsTitleEn.value;school.parentsTextSi=sParentsTextSi.value;school.parentsTextEn=sParentsTextEn.value;saveAll();render();toast(t('School information updated.','පාසල් තොරතුරු update කළා.'));}
+function adminParents(){const titleSi=school.parentsTitleSi||'පවුල් සහභාගීත්වය',titleEn=school.parentsTitleEn||'Family Partnership',textSi=school.parentsTextSi||'',textEn=school.parentsTextEn||'';return `<div class="panel" style="padding:20px"><form onsubmit="saveParents(event)" style="display:grid;gap:14px"><h2 style="color:var(--wine)">${t('Parents / Contact Content','දෙමාපිය / Contact තොරතුරු')}</h2>${langInputs('parTitle','මාතෘකාව','Title',titleSi,titleEn)}${textareas('parText','විස්තර','Details',textSi,textEn)}<p class="small muted">${t('Phone, email and address are edited from School & Home.','Phone, email සහ address School & Home කොටසෙන් වෙනස් කළ හැක.')}</p><button class="btn btn-primary">${t('Save Parents Content','දෙමාපිය තොරතුරු Save කරන්න')}</button></form></div>`}
+function saveParents(e){e.preventDefault();school.parentsTitleSi=parTitleSi.value;school.parentsTitleEn=parTitleEn.value;school.parentsTextSi=parTextSi.value;school.parentsTextEn=parTextEn.value;saveAll();render();toast(t('Parents content updated.','දෙමාපිය තොරතුරු update කළා.'));}
+function adminPrincipal(){const p=school.principal||{};return `<div class="panel" style="padding:20px"><form onsubmit="savePrincipal(event)" style="display:grid;gap:14px">${langInputs('pName','නම','Name',p.nameSi||'',p.nameEn||'')}${textareas('pBio','විස්තර','Details',p.bioSi||'',p.bioEn||'')}<label class="form-field">${t('Principal photo','විදුහල්පති photo')}<input class="field" id="pPhoto" type="file" accept="image/*" onchange="previewInput(this,'principalPreview')"></label><div id="principalPreview"></div><div class="admin-preview-row">${p.photoData?`<img src="${esc(p.photoData)}" alt="Principal">`:p.photoId?`<img src="" data-media-id="${p.photoId}" alt="Principal">`:empty(t('No principal photo yet.','විදුහල්පති photo එකක් තවම නැහැ.'))}</div><button class="btn btn-primary">${t('Save Principal','විදුහල්පති Save කරන්න')}</button></form></div>`}
+async function savePrincipal(e){e.preventDefault();school.principal=school.principal||{};school.principal.nameSi=pNameSi.value;school.principal.nameEn=pNameEn.value;school.principal.bioSi=pBioSi.value;school.principal.bioEn=pBioEn.value;const f=pPhoto.files&&pPhoto.files[0];if(f){const u=await cloudinaryImageUpload(f);school.principal.photoData=u;school.principal.photoId=u}saveAll();render();toast(t('Principal updated.','විදුහල්පති තොරතුරු update කළා.'));}
+function adminTeachers(){return `<div class="panel" style="padding:20px"><h2 style="color:var(--wine)">${t('Add / Edit Teacher','ගුරුවරයෙක් එකතු / Edit කරන්න')}</h2><form onsubmit="addTeacher(event)" style="display:grid;gap:13px">${langInputs('tName','නම','Name','','')}${langInputs('tSubject','උගන්වන විෂය','Teaching Subject','','')}${textareas('tBio','විස්තර','Details','','')}<label class="form-field">Photo<input class="field" id="tPhoto" type="file" accept="image/*" onchange="previewInput(this,'teacherPreview')"></label><div id="teacherPreview"></div><button class="btn btn-primary">${t('Add Teacher','ගුරුවරයෙක් එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Teacher profiles','ගුරු පැතිකඩ')}</h2></div><div class="staff-grid">${db.teachers.map(x=>`<article class="card staff-card">${x.photoData?`<img class="avatar" src="${esc(x.photoData)}" alt="Teacher">`:x.photoId?`<img class="avatar" src="" data-media-id="${x.photoId}" alt="Teacher">`:`<div class="avatar" style="margin:auto;display:flex;align-items:center;justify-content:center;font-size:34px">👨‍🏫</div>`}<h3>${esc(t(x.nameEn,x.nameSi))}</h3><div class="subjects">${esc(t(x.subjectEn,x.subjectSi))}</div><p>${esc(t(x.bioEn,x.bioSi))}</p><div class="item-tools" style="justify-content:center"><button class="btn btn-light btn-small" onclick="editTeacher(${x.id})">${t('Edit','Edit')}</button><button class="btn btn-primary btn-small" onclick="openTeacher(${x.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-danger btn-small" onclick="deleteTeacher(${x.id})">${t('Delete','Delete')}</button></div></article>`).join('')||empty(t('No teachers yet.','ගුරුවරු නැත.'))}</div>`}
+async function addTeacher(e){e.preventDefault();const f=tPhoto.files&&tPhoto.files[0];db.teachers.push({id:Date.now(),nameSi:tNameSi.value,nameEn:tNameEn.value,subjectSi:tSubjectSi.value,subjectEn:tSubjectEn.value,bioSi:tBioSi.value,bioEn:tBioEn.value,photoData:f?await cloudinaryImageUpload(f):'',photoId:null});saveAll();render();toast(t('Teacher added.','ගුරුවරයා එකතු කළා.'));}
+function editTeacher(id){const x=db.teachers.find(v=>v.id===id);if(!x)return;document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="saveTeacherEdit(event,${id})" style="display:grid;gap:13px">${langInputs('eTName','නම','Name',x.nameSi||'',x.nameEn||'')}${langInputs('eTSubject','උගන්වන විෂය','Teaching Subject',x.subjectSi||'',x.subjectEn||'')}${textareas('eTBio','විස්තර','Details',x.bioSi||'',x.bioEn||'')}<label class="form-field">Photo<input class="field" id="eTPhoto" type="file" accept="image/*"></label><div class="admin-preview-row">${x.photoData?`<img src="${esc(x.photoData)}" alt="Teacher">`:x.photoId?`<img src="" data-media-id="${x.photoId}" alt="Teacher">`:empty(t('No photo yet.','photo එකක් නැහැ.'))}</div><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('teachers')">${t('Cancel','අවලංගු')}</button></form></div>`;hydrateMedia(document.getElementById('adminArea'));}
+async function saveTeacherEdit(e,id){e.preventDefault();const x=db.teachers.find(v=>v.id===id);x.nameSi=eTNameSi.value;x.nameEn=eTNameEn.value;x.subjectSi=eTSubjectSi.value;x.subjectEn=eTSubjectEn.value;x.bioSi=eTBioSi.value;x.bioEn=eTBioEn.value;const f=eTPhoto.files&&eTPhoto.files[0];if(f){const u=await cloudinaryImageUpload(f);x.photoData=u;x.photoId=u}saveAll();render();toast(t('Teacher updated.','ගුරුවරයා update කළා.'));}
+function deleteTeacher(id){if(!confirm(t('Delete this teacher?','මේ ගුරුවරයා delete කරන්නද?')))return;db.teachers=db.teachers.filter(x=>x.id!==id);saveAll();render();toast(t('Teacher deleted.','ගුරුවරයා delete කළා.'));}
+
+function adminNotices(){return `<div class="panel" style="padding:20px"><form onsubmit="addNotice(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add Notice','අලුත් දැනුම්දීමක්')}</h2>${langInputs('nTitle','මාතෘකාව','Headline','','')}${langInputs('nCat','වර්ගය','Category','පාසල් පුවත්','School News')}${textareas('nBody','විස්තර','Description','','')}<label class="check"><input class="checkbox" id="nNotify" type="checkbox" checked> 🔔 ${t('Create notification for this new notice','මේ notice එකට notification එකක් දෙන්න')}</label><button class="btn btn-primary">${t('Publish Notice','දැනුම්දීම Publish කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage Notices','දැනුම්දීම් Manage කරන්න')}</h2></div><div class="list">${db.notices.map(n=>`<div class="list-row"><div><span class="tag">${esc(t(n.catEn,n.catSi))}</span><h3>${esc(t(n.titleEn,n.titleSi))}</h3><p>${esc(t(n.bodyEn,n.bodySi))}</p><span class="date">${esc(n.date)}</span></div><div class="item-tools"><button class="btn btn-light btn-small" onclick="editNotice(${n.id})">${t('Edit','Edit')}</button><button class="btn btn-danger btn-small" onclick="deleteNotice(${n.id})">${t('Delete','Delete')}</button></div></div>`).join('')}</div>`}
+function addNotice(e){e.preventDefault();const n={id:Date.now(),titleSi:nTitleSi.value,titleEn:nTitleEn.value,catSi:nCatSi.value||'පාසල් පුවත්',catEn:nCatEn.value||'School News',bodySi:nBodySi.value,bodyEn:nBodyEn.value,date:new Date().toISOString().slice(0,10),createdAt:Date.now(),notify:nNotify.checked};db.notices.unshift(n);if(n.notify){const no={id:Date.now()+1,type:'notice',refType:'notice',refId:n.id,titleSi:n.titleSi,titleEn:n.titleEn,textSi:'නව දැනුම්දීමක් එකතු කර ඇත.',textEn:'A new school notice has been added.',time:Date.now(),read:false};notifications.unshift(no);saveAll();browserNotify(t(n.titleEn,n.titleSi));}else saveAll();render();toast(t('Notice published and notification created.','Notice එක Publish කර notification එකත් සෑදුවා.'));}
+function editNotice(id){const n=db.notices.find(x=>x.id===id);document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="saveNoticeEdit(event,${id})" style="display:grid;gap:13px">${langInputs('enTitle','මාතෘකාව','Headline',n.titleSi,n.titleEn)}${langInputs('enCat','වර්ගය','Category',n.catSi,n.catEn)}${textareas('enBody','විස්තර','Description',n.bodySi,n.bodyEn)}<input class="field" id="enDate" type="date" value="${esc(n.date)}"><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('notices')">${t('Cancel','අවලංගු')}</button></form></div>`;}
+function saveNoticeEdit(e,id){e.preventDefault();const n=db.notices.find(x=>x.id===id);n.titleSi=enTitleSi.value;n.titleEn=enTitleEn.value;n.catSi=enCatSi.value;n.catEn=enCatEn.value;n.bodySi=enBodySi.value;n.bodyEn=enBodyEn.value;n.date=enDate.value;saveAll();render();toast(t('Notice updated.','Notice එක update කළා.'));}
+function deleteNotice(id){if(!confirm(t('Delete this notice?','මේ notice එක delete කරන්නද?')))return;db.notices=db.notices.filter(x=>x.id!==id);notifications=notifications.filter(n=>n.refId!==id);saveAll();render();toast(t('Notice deleted.','Notice එක delete කළා.'));}
+
+function adminEvents(){return `<div class="panel" style="padding:20px"><form onsubmit="addEvent(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add Event','අලුත් සිදුවීමක්')}</h2>${langInputs('evTitle','මාතෘකාව','Headline','','')}${langInputs('evPlace','ස්ථානය','Place','','')}${textareas('evDesc','විස්තර','Description','','')}<div class="two"><label class="form-field">Date<input class="field" id="evDate" type="date" required></label><label class="form-field">Time<input class="field" id="evTime" value="9:00 AM"></label></div><div class="two"><label class="form-field">Photo<input class="field" id="evPhoto" type="file" accept="image/*"></label><label class="form-field">Video<input class="field" id="evVideo" type="file" accept="video/*"></label></div><button class="btn btn-primary">${t('Add Event','සිදුවීම එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage Events','සිදුවීම් Manage කරන්න')}</h2></div><div class="list">${db.events.map(e=>`<div class="list-row"><div><span class="tag">${esc(e.date)}</span><h3>${esc(t(e.titleEn,e.titleSi))}</h3><p>${esc(t(e.descEn,e.descSi))}</p><span class="date">${esc(t(e.placeEn,e.placeSi))} · ${esc(e.time)} ${e.photoData||e.photoId?' · 📷':''}${e.videoId?' · 🎥':''}</span></div><div class="item-tools"><button class="btn btn-light btn-small" onclick="editEvent(${e.id})">${t('Edit','Edit')}</button><button class="btn btn-danger btn-small" onclick="deleteEvent(${e.id})">${t('Delete','Delete')}</button></div></div>`).join('')}</div>`}
+async function addEvent(e){e.preventDefault();const p=evPhoto.files&&evPhoto.files[0],v=evVideo.files&&evVideo.files[0];db.events.unshift({id:Date.now(),titleSi:evTitleSi.value,titleEn:evTitleEn.value,placeSi:evPlaceSi.value,placeEn:evPlaceEn.value,descSi:evDescSi.value,descEn:evDescEn.value,date:evDate.value,time:evTime.value,photoData:p?await cloudinaryImageUpload(p):'',photoId:null,videoId:v?await mediaPut('video',v):null});saveAll();render();toast(t('Event added.','සිදුවීම එකතු කළා.'));}
+function editEvent(id){const x=db.events.find(v=>v.id===id);document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="saveEventEdit(event,${id})" style="display:grid;gap:13px">${langInputs('eeTitle','මාතෘකාව','Headline',x.titleSi,x.titleEn)}${langInputs('eePlace','ස්ථානය','Place',x.placeSi,x.placeEn)}${textareas('eeDesc','විස්තර','Description',x.descSi,x.descEn)}<div class="two"><label class="form-field">Date<input class="field" id="eeDate" type="date" value="${esc(x.date)}"></label><label class="form-field">Time<input class="field" id="eeTime" value="${esc(x.time)}"></label></div><div class="two"><label class="form-field">Replace Photo<input class="field" id="eePhoto" type="file" accept="image/*"></label><label class="form-field">Replace Video<input class="field" id="eeVideo" type="file" accept="video/*"></label></div><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('events')">${t('Cancel','අවලංගු')}</button></form></div>`;}
+async function saveEventEdit(e,id){e.preventDefault();const x=db.events.find(v=>v.id===id);x.titleSi=eeTitleSi.value;x.titleEn=eeTitleEn.value;x.placeSi=eePlaceSi.value;x.placeEn=eePlaceEn.value;x.descSi=eeDescSi.value;x.descEn=eeDescEn.value;x.date=eeDate.value;x.time=eeTime.value;const p=eePhoto.files&&eePhoto.files[0],v=eeVideo.files&&eeVideo.files[0];if(p){const u=await cloudinaryImageUpload(p);x.photoData=u;x.photoId=u}if(v)x.videoId=await mediaPut('video',v);saveAll();render();toast(t('Event updated.','සිදුවීම update කළා.'));}
+function deleteEvent(id){if(!confirm(t('Delete this event?','මේ event එක delete කරන්නද?')))return;db.events=db.events.filter(x=>x.id!==id);saveAll();render();toast(t('Event deleted.','සිදුවීම delete කළා.'));}
+
+function adminAchievements(){return `<div class="panel" style="padding:20px"><form onsubmit="addAchievement(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add Achievement','අලුත් ජයග්‍රහණයක්')}</h2>${langInputs('acTitle','මාතෘකාව','Headline','','')}${textareas('acDesc','විස්තර','Description','','')}<div class="two"><label class="form-field">Photo<input class="field" id="acPhoto" type="file" accept="image/*" onchange="previewInput(this,'achievementPreview')"></label><label class="form-field">Video<input class="field" id="acVideo" type="file" accept="video/*"></label></div><button class="btn btn-primary">${t('Add Achievement','ජයග්‍රහණය එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage Achievements','ජයග්‍රහණ Manage කරන්න')}</h2></div><div class="grid">${db.achievements.map(a=>`<article class="card">${a.photoData?`<img class="media-cover" src="${esc(a.photoData)}" alt="Achievement">`:''}<h3>${esc(t(a.titleEn,a.titleSi))}</h3><p>${esc(t(a.descEn,a.descSi))}</p><p class="date">${a.photoData||a.photoId?'📷 ':''}${a.videoId?'🎥 ':''}</p><div class="item-tools"><button class="btn btn-light btn-small" onclick="editAchievement(${a.id})">${t('Edit','Edit')}</button><button class="btn btn-primary btn-small" onclick="openAchievement(${a.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-danger btn-small" onclick="deleteAchievement(${a.id})">${t('Delete','Delete')}</button></div></article>`).join('')||empty(t('No achievements yet.','ජයග්‍රහණ නැත.'))}</div>`}
+async function addAchievement(e){e.preventDefault();const p=acPhoto.files&&acPhoto.files[0],v=acVideo.files&&acVideo.files[0];db.achievements.unshift({id:Date.now(),titleSi:acTitleSi.value,titleEn:acTitleEn.value,descSi:acDescSi.value,descEn:acDescEn.value,photoData:p?await cloudinaryImageUpload(p):'',photoId:null,videoId:v?await mediaPut('video',v):null});saveAll();render();toast(t('Achievement added.','ජයග්‍රහණය එකතු කළා.'));}
+function editAchievement(id){const x=db.achievements.find(v=>v.id===id);if(!x)return;document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="saveAchievementEdit(event,${id})" style="display:grid;gap:13px">${langInputs('eaTitle','මාතෘකාව','Headline',x.titleSi||'',x.titleEn||'')}${textareas('eaDesc','විස්තර','Description',x.descSi||'',x.descEn||'')}<div class="two"><label class="form-field">Replace Photo<input class="field" id="eaPhoto" type="file" accept="image/*"></label><label class="form-field">Replace Video<input class="field" id="eaVideo" type="file" accept="video/*"></label></div><div class="admin-preview-row">${x.photoData?`<img src="${esc(x.photoData)}" alt="Achievement">`:x.photoId?`<img src="" data-media-id="${x.photoId}" alt="Achievement">`:empty(t('No current photo.','දැනට photo එකක් නැහැ.'))}</div><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('achievements')">${t('Cancel','අවලංගු')}</button></form></div>`;hydrateMedia(document.getElementById('adminArea'));}
+async function saveAchievementEdit(e,id){e.preventDefault();const x=db.achievements.find(v=>v.id===id);x.titleSi=eaTitleSi.value;x.titleEn=eaTitleEn.value;x.descSi=eaDescSi.value;x.descEn=eaDescEn.value;const p=eaPhoto.files&&eaPhoto.files[0],v=eaVideo.files&&eaVideo.files[0];if(p){const u=await cloudinaryImageUpload(p);x.photoData=u;x.photoId=u}if(v)x.videoId=await mediaPut('video',v);saveAll();render();toast(t('Achievement updated.','ජයග්‍රහණය update කළා.'));}
+function deleteAchievement(id){if(!confirm(t('Delete this achievement?','මේ ජයග්‍රහණය delete කරන්නද?')))return;db.achievements=db.achievements.filter(x=>x.id!==id);saveAll();render();toast(t('Achievement deleted.','ජයග්‍රහණය delete කළා.'));}
+
+async function addPhoto(e){e.preventDefault();const f=phFile.files&&phFile.files[0];if(!f)return;try{const url=await cloudinaryImageUpload(f);db.gallery.unshift({id:Date.now(),titleSi:phTitleSi.value,titleEn:phTitleEn.value,descSi:phDescSi.value,descEn:phDescEn.value,dataUrl:url,photoData:'',mediaId:url});saveAll();render();toast(t('Photo added online.','ඡායාරූපය online එකතු කළා.'))}catch(err){console.error(err);toast(t(err.message||'Photo upload failed.','Photo upload කරන්න බැරි වුණා.'))}}
+function deleteGallery(id){if(!confirm(t('Delete this photo?','මේ photo එක delete කරන්නද?')))return;db.gallery=db.gallery.filter(x=>x.id!==id);saveAll();render();toast(t('Photo deleted.','ඡායාරූපය delete කළා.'))}
+
+function adminGallery(){return `<div class="panel" style="padding:20px"><form onsubmit="addPhoto(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add Photo','ඡායාරූපයක් එකතු කරන්න')}</h2>${langInputs('phTitle','මාතෘකාව','Headline','','')}${textareas('phDesc','විස්තර','Description','','')}<label class="form-field">Photo<input class="field" id="phFile" type="file" accept="image/*" required onchange="previewInput(this,'photoPreview')"></label><div id="photoPreview"></div><button class="btn btn-primary">${t('Add Photo','ඡායාරූපය එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage Photos','ඡායාරූප Manage කරන්න')}</h2></div><div class="media-grid">${db.gallery.map(x=>`<div class="media"><div id="media-photo-${x.id}" data-media-card="photo" data-id="${x.id}">${x.dataUrl?`<img class="media-cover" src="${esc(x.dataUrl)}" alt="Photo">`:`<div class="empty">Loading...</div>`}</div><div class="media-title">${esc(t(x.titleEn,x.titleSi))}</div><p class="media-desc">${esc(t(x.descEn,x.descSi))}</p><div class="media-actions"><button class="btn btn-primary btn-small" onclick="openMediaItem('photo',${x.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-light btn-small" onclick="editPhoto(${x.id})">${t('Edit','Edit')}</button><button class="btn btn-danger btn-small" onclick="deleteGallery(${x.id})">${t('Delete','Delete')}</button></div></div>`).join('')||empty(t('No photos yet.','ඡායාරූප නැත.'))}</div>`}
+function editPhoto(id){const x=db.gallery.find(v=>v.id===id);if(!x)return;document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="savePhotoEdit(event,${id})" style="display:grid;gap:13px">${langInputs('epTitle','මාතෘකාව','Headline',x.titleSi||'',x.titleEn||'')}${textareas('epDesc','විස්තර','Description',x.descSi||'',x.descEn||'')}<label class="form-field">${t('Replace Photo','Photo වෙනස් කරන්න')}<input class="field" id="epPhoto" type="file" accept="image/*"></label><div class="admin-preview-row">${x.dataUrl?`<img src="${esc(x.dataUrl)}" alt="Photo">`:x.mediaId?`<img src="" data-media-id="${x.mediaId}" alt="Photo">`:empty(t('No current photo.','දැනට photo එකක් නැහැ.'))}</div><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('gallery')">${t('Cancel','අවලංගු')}</button></form></div>`;hydrateMedia(document.getElementById('adminArea'));}
+async function savePhotoEdit(e,id){e.preventDefault();const x=db.gallery.find(v=>v.id===id);x.titleSi=epTitleSi.value;x.titleEn=epTitleEn.value;x.descSi=epDescSi.value;x.descEn=epDescEn.value;const f=epPhoto.files&&epPhoto.files[0];if(f){x.dataUrl='';x.mediaId=await cloudinaryImageUpload(f)}saveAll();render();toast(t('Photo updated.','ඡායාරූපය update කළා.'));}
+
+async function addVideo(e){e.preventDefault();const f=vdFile.files&&vdFile.files[0];if(!f)return;db.videos.unshift({id:Date.now(),titleSi:vdTitleSi.value,titleEn:vdTitleEn.value,descSi:vdDescSi.value,descEn:vdDescEn.value,mediaId:await mediaPut('video',f)});saveAll();render();toast(t('Video added.','වීඩියෝව එකතු කළා.'));}
+function adminVideos(){return `<div class="panel" style="padding:20px"><form onsubmit="addVideo(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add Video','වීඩියෝවක් එකතු කරන්න')}</h2>${langInputs('vdTitle','මාතෘකාව','Headline','','')}${textareas('vdDesc','විස්තර','Description','','')}<label class="form-field">Video<input class="field" id="vdFile" type="file" accept="video/*" required></label><button class="btn btn-primary">${t('Add Video','වීඩියෝව එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage Videos','වීඩියෝ Manage කරන්න')}</h2></div><div class="media-grid">${db.videos.map(x=>`<div class="media"><div id="media-video-${x.id}" data-media-card="video" data-id="${x.id}"><div class="empty">🎥 ${t('Video','වීඩියෝ')}</div></div><div class="media-title">${esc(t(x.titleEn,x.titleSi))}</div><p class="media-desc">${esc(t(x.descEn,x.descSi))}</p><div class="media-actions"><button class="btn btn-primary btn-small" onclick="openMediaItem('video',${x.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-light btn-small" onclick="editVideo(${x.id})">${t('Edit','Edit')}</button><button class="btn btn-danger btn-small" onclick="deleteVideo(${x.id})">${t('Delete','Delete')}</button></div></div>`).join('')||empty(t('No videos yet.','වීඩියෝ නැත.'))}</div>`}
+function editVideo(id){const x=db.videos.find(v=>v.id===id);if(!x)return;document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="saveVideoEdit(event,${id})" style="display:grid;gap:13px">${langInputs('evdTitle','මාතෘකාව','Headline',x.titleSi||'',x.titleEn||'')}${textareas('evdDesc','විස්තර','Description',x.descSi||'',x.descEn||'')}<label class="form-field">${t('Replace Video','Video වෙනස් කරන්න')}<input class="field" id="evdFile" type="file" accept="video/*"></label><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('videos')">${t('Cancel','අවලංගු')}</button></form></div>`;}
+async function saveVideoEdit(e,id){e.preventDefault();const x=db.videos.find(v=>v.id===id);x.titleSi=evdTitleSi.value;x.titleEn=evdTitleEn.value;x.descSi=evdDescSi.value;x.descEn=evdDescEn.value;const f=evdFile.files&&evdFile.files[0];if(f){if(x.mediaId){try{await mediaDelete(x.mediaId)}catch{}}x.mediaId=await mediaPut('video',f)}saveAll();render();toast(t('Video updated.','වීඩියෝව update කළා.'));}
+function deleteVideo(id){if(!confirm(t('Delete this video?','මේ video එක delete කරන්නද?')))return;db.videos=db.videos.filter(x=>x.id!==id);saveAll();toast(t('Video deleted.','වීඩියෝව delete කළා.'));}
+function adminApplications(){return `<div class="panel" style="padding:20px"><form onsubmit="addPdf(event)" style="display:grid;gap:13px"><h2 style="color:var(--wine)">${t('Add PDF','PDF එකක් එකතු කරන්න')}</h2>${langInputs('pdfTitle','මාතෘකාව','Headline','','')}${textareas('pdfDesc','විස්තර','Description','','')}<label class="form-field">PDF File<input class="field" id="pdfFile" type="file" accept="application/pdf,.pdf" required></label><button class="btn btn-primary">${t('Add PDF','PDF එක එකතු කරන්න')}</button></form></div><div class="section-head"><h2>${t('Manage PDFs','PDF Manage කරන්න')}</h2></div><div class="list">${db.applications.map(a=>`<div class="list-row"><div><h3>${esc(t(a.titleEn,a.titleSi))}</h3><p>${esc(t(a.descEn,a.descSi))}</p><span class="date">${esc(a.fileName||'PDF')}</span></div><div class="item-tools"><button class="btn btn-primary btn-small" onclick="openPdf(${a.id})">${t('Open','විවෘත කරන්න')}</button><button class="btn btn-gold btn-small" onclick="printPdf(${a.id})">${t('Print','Print')}</button><button class="btn btn-light btn-small" onclick="editPdf(${a.id})">${t('Edit','Edit')}</button><button class="btn btn-danger btn-small" onclick="deletePdf(${a.id})">${t('Delete','Delete')}</button></div></div>`).join('')||empty(t('No PDFs yet.','PDF නැත.'))}</div>`}
+function editPdf(id){const x=db.applications.find(v=>v.id===id);if(!x)return;document.getElementById('adminArea').innerHTML=`<div class="panel" style="padding:20px"><form onsubmit="savePdfEdit(event,${id})" style="display:grid;gap:13px">${langInputs('epdfTitle','මාතෘකාව','Headline',x.titleSi||'',x.titleEn||'')}${textareas('epdfDesc','විස්තර','Description',x.descSi||'',x.descEn||'')}<label class="form-field">${t('Replace PDF','PDF වෙනස් කරන්න')}<input class="field" id="epdfFile" type="file" accept="application/pdf,.pdf"></label><div class="file-name">${esc(x.fileName||'PDF')}</div><button class="btn btn-primary">${t('Save Changes','වෙනස්කම් Save කරන්න')}</button><button type="button" class="btn btn-light" onclick="setAdminTab('applications')">${t('Cancel','අවලංගු')}</button></form></div>`;}
+async function savePdfEdit(e,id){e.preventDefault();const x=db.applications.find(v=>v.id===id);x.titleSi=epdfTitleSi.value;x.titleEn=epdfTitleEn.value;x.descSi=epdfDescSi.value;x.descEn=epdfDescEn.value;const f=epdfFile.files&&epdfFile.files[0];if(f){if(x.pdfId){try{await mediaDelete(x.pdfId)}catch{}}x.pdfId=await mediaPut('pdf',f);x.pdfData='';x.fileName=f.name}saveAll();render();toast(t('PDF updated.','PDF එක update කළා.'));}
+async function addPdf(e){e.preventDefault();const f=pdfFile.files&&pdfFile.files[0];if(!f||(!f.type.includes('pdf')&&!f.name.toLowerCase().endsWith('.pdf'))){toast(t('Please choose a PDF file.','කරුණාකර PDF file එකක් තෝරන්න.'));return}const pdfId=await mediaPut('pdf',f);const pdfData='';db.applications.unshift({id:Date.now(),titleSi:pdfTitleSi.value,titleEn:pdfTitleEn.value,descSi:pdfDescSi.value,descEn:pdfDescEn.value,pdfId,pdfData,fileName:f.name});const ok=saveAll();if(ok){render();toast(t('PDF added. Open / Download / Print are ready.','PDF එක එකතු කළා. Open / Download / Print දැන් වැඩ.'))}else{toast(t('Storage is full. Remove old items and try again.','Storage පිරී ඇත. පරණ items කිහිපයක් මකා ආයෙ උත්සාහ කරන්න.'))}}
+function deletePdf(id){if(!confirm(t('Delete this PDF?','මේ PDF එක delete කරන්නද?')))return;db.applications=db.applications.filter(x=>x.id!==id);saveAll();render();toast(t('PDF deleted.','PDF එක delete කළා.'));}
+async function adminAppearance(){
+  let bgSrc=settings.bgData||'',logoSrc=settings.logoData||'';
+  try{
+    if(!bgSrc&&settings.bgId){const o=await mediaGet(settings.bgId);if(o)bgSrc=URL.createObjectURL(o.blob)}
+    if(!logoSrc&&settings.logoId){const o=await mediaGet(settings.logoId);if(o)logoSrc=URL.createObjectURL(o.blob)}
+  }catch{}
+  return `<div class="panel" style="padding:20px;display:grid;gap:18px"><h2 style="color:var(--wine)">${t('Logo & Background','Logo හා Background')}</h2><div class="two"><div><label class="form-field">${t('Change App Logo','App Logo වෙනස් කරන්න')}<input class="field" id="logoFile" type="file" accept="image/*" onchange="saveLogo(this)"></label><p class="small muted">${t('Uploaded to Cloudinary so everyone can see the new logo.','Cloudinary වෙත upload වන නිසා හැමෝටම අලුත් logo එක පෙනේ.')}</p>${logoSrc?`<img class="cover-preview" src="${logoSrc}" alt="Logo">`:`<div class="empty">${t('No custom logo selected.','Custom logo එකක් තෝරා නැත.')}</div>`}</div><div><label class="form-field">${t('Change Full-screen Background','Full-screen Background වෙනස් කරන්න')}<input class="field" id="bgFile" type="file" accept="image/*" onchange="saveBg(this)"></label><p class="small muted">${t('Uploaded to Cloudinary so everyone can see the new background.','Cloudinary වෙත upload වන නිසා හැමෝටම අලුත් background එක පෙනේ.')}</p>${bgSrc?`<img class="cover-preview" src="${bgSrc}" alt="Background">`:`<div class="empty">${t('No custom background selected.','Custom background එකක් තෝරා නැත.')}</div>`}</div></div><div class="item-tools"><button class="btn btn-danger" onclick="resetLogo()">${t('Reset Logo','Logo Reset')}</button><button class="btn btn-danger" onclick="resetBg()">${t('Reset Background','Background Reset')}</button></div></div>`
+}
+function readFileDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(r.error||new Error('FileReader error'));r.readAsDataURL(file)})}
+async function fileToDataUrl(file,maxSize,quality=0.84){return cloudinaryImageUpload(file)}
+async function saveLogo(input){const f=input.files&&input.files[0];if(!f)return;try{settings.logoData=await cloudinaryImageUpload(f);settings.logoId=null;saveAll();await applyMediaSettings();if(location.hash.slice(1)==='admin')await renderAdminArea();toast(t('Logo updated successfully.','Logo එක සාර්ථකව update කළා.'));}catch(err){console.error(err);toast(t('Could not save the logo.','Logo එක save කරන්න බැරි වුණා.'));}}
+async function saveBg(input){const f=input.files&&input.files[0];if(!f)return;try{settings.bgData=await cloudinaryImageUpload(f);settings.bgId=null;saveAll();await applyMediaSettings();if(location.hash.slice(1)==='admin')await renderAdminArea();toast(t('Background updated successfully.','Background එක සාර්ථකව update කළා.'));}catch(err){console.error(err);toast(t('Could not save the background.','Background එක save කරන්න බැරි වුණා.'));}}
+function resetLogo(){settings.logoId=null;settings.logoData='';saveAll();applyMediaSettings();if(location.hash.slice(1)==='admin')renderAdminArea();toast(t('Logo reset.','Logo reset කළා.'))}
+function resetBg(){settings.bgId=null;settings.bgData='';saveAll();document.body.classList.remove('bg-active');document.body.style.backgroundImage='';if(location.hash.slice(1)==='admin')renderAdminArea();toast(t('Background reset.','Background reset කළා.'))}
+
+function login(e){e.preventDefault();if(document.getElementById('adminUser').value==='thiwanaka123'&&document.getElementById('adminPass').value==='pmv2026'){logged=true;adminTabName='overview';render();toast(t('Admin login successful.','Admin login සාර්ථකයි.'));}else toast(t('Wrong username or password.','Username හෝ password වැරදියි.'))}
+
+function openNotice(id){const n=db.notices.find(x=>x.id===id);if(!n)return;const related=notifications.find(v=>v.refType==='notice'&&v.refId===id);if(related){related.read=true;saveAll()}document.getElementById('modalBody').innerHTML=`<span class="tag">${esc(t(n.catEn,n.catSi))}</span><h2>${esc(t(n.titleEn,n.titleSi))}</h2><p style="line-height:1.8;white-space:pre-line">${esc(t(n.bodyEn,n.bodySi))}</p><span class="date">${esc(n.date)}</span>`;showModal();updateBadge()}
+async function openEvent(id){const e=db.events.find(x=>x.id===id);if(!e)return;const ph=e.photoData||'';const po=e.photoId?await mediaGet(e.photoId):null;const vi=e.videoId?await mediaGet(e.videoId):null;const phUrl=ph||(po?.url||((po?.blob)?URL.createObjectURL(po.blob):''));document.getElementById('modalBody').innerHTML=`<span class="tag">${esc(e.date)}</span><h2>${esc(t(e.titleEn,e.titleSi))}</h2><p><b>${esc(e.time)}</b> · ${esc(t(e.placeEn,e.placeSi))}</p><p class="readable-text" style="line-height:1.9;white-space:pre-line">${esc(t(e.descEn,e.descSi))}</p><div class="modal-media">${phUrl?`<img src="${esc(phUrl)}" alt="Event photo">`:''}${vi?`<video controls src="${esc(vi.url||((vi.blob)?URL.createObjectURL(vi.blob):''))}"></video>`:''}</div>`;showModal()}
+async function openAchievement(id){const a=db.achievements.find(x=>x.id===id);if(!a)return;const ph=a.photoData||'';const po=a.photoId?await mediaGet(a.photoId):null;const vi=a.videoId?await mediaGet(a.videoId):null;const phUrl=ph||(po?.url||((po?.blob)?URL.createObjectURL(po.blob):''));document.getElementById('modalBody').innerHTML=`<span class="tag">🏆</span><h2>${esc(t(a.titleEn,a.titleSi))}</h2><p class="readable-text" style="line-height:1.9;white-space:pre-line">${esc(t(a.descEn,a.descSi))}</p><div class="modal-media">${phUrl?`<img src="${esc(phUrl)}" alt="Achievement photo">`:''}${vi?`<video controls src="${URL.createObjectURL(vi.blob)}"></video>`:''}</div>`;showModal()}
+async function openTeacher(id){const x=db.teachers.find(v=>v.id===id);if(!x)return;const ph=x.photoData||'';const po=x.photoId?await mediaGet(x.photoId):null;const phUrl=ph||(po?.url||((po?.blob)?URL.createObjectURL(po.blob):''));document.getElementById('modalBody').innerHTML=`<div style="text-align:center">${phUrl?`<img class="avatar" style="width:160px;height:160px" src="${esc(phUrl)}" alt="Teacher">`:'<div class="avatar" style="margin:auto;display:flex;align-items:center;justify-content:center;font-size:50px">👨‍🏫</div>'}<h2>${esc(t(x.nameEn,x.nameSi))}</h2><div class="subjects">${esc(t(x.subjectEn,x.subjectSi))}</div><p class="readable-text" style="white-space:pre-line;line-height:1.9">${esc(t(x.bioEn,x.bioSi))}</p></div>`;showModal()}
+async function openMediaItem(kind,id){const item=kind==='photo'?db.gallery.find(x=>x.id===id):db.videos.find(x=>x.id===id);if(!item)return;let u=item.dataUrl||item.photoData||'';if(!u&&item.mediaId){const o=await mediaGet(item.mediaId);if(o)u=o.url||((o.blob)?URL.createObjectURL(o.blob):'')}if(!u){toast(t('Media file missing.','Media file එක හමු නොවීය.'));return}document.getElementById('modalBody').innerHTML=`<h2>${esc(t(item.titleEn,item.titleSi))}</h2><p class="readable-text" style="white-space:pre-line;line-height:1.9">${esc(t(item.descEn,item.descSi))}</p><div class="modal-media">${kind==='photo'?`<img src="${esc(u)}" alt="${esc(t(item.titleEn,item.titleSi))}">`:`<video controls autoplay src="${esc(u)}"></video>`}</div>`;showModal()}
+async function resolvePdf(a){if(!a)return null;if(a.pdfData)return {url:a.pdfData,revoke:false};if(a.pdfId){const o=await mediaGet(a.pdfId);if(o)return {url:o.url||((o.blob)?URL.createObjectURL(o.blob):''),revoke:!o.url}}return null}
+async function openPdf(id){const a=db.applications.find(x=>x.id===id);if(!a)return;const r=await resolvePdf(a);if(!r){toast(t('PDF file missing.','PDF file එක හමු නොවීය.'));return}document.getElementById('modalBody').innerHTML=`<h2>${esc(t(a.titleEn,a.titleSi))}</h2><p class="readable-text" style="white-space:pre-line;line-height:1.8">${esc(t(a.descEn,a.descSi))}</p><div class="item-tools" style="margin:10px 0"><a class="btn btn-gold btn-small" href="${esc(r.url)}" download="${esc(a.fileName||'PMV.pdf')}">${t('Download PDF','PDF Download')}</a><button class="btn btn-primary btn-small" onclick="printPdf(${id})">${t('Print PDF','PDF Print')}</button><a class="btn btn-light btn-small" href="${esc(r.url)}" target="_blank">${t('Open in new tab','නව tab එකකින් විවෘත කරන්න')}</a></div><iframe class="modal-pdf" src="${esc(r.url)}" title="PDF preview"></iframe>`;showModal()}
+async function downloadPdf(appId){const a=db.applications.find(x=>x.id===appId);const r=await resolvePdf(a);if(!r){toast(t('PDF file missing.','PDF file එක හමු නොවීය.'));return}const link=document.createElement('a');link.href=r.url;link.download=a.fileName||'PMV-form.pdf';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>r.revoke&&URL.revokeObjectURL(r.url),2500)}
+async function printPdf(appId){const a=db.applications.find(x=>x.id===appId);const r=await resolvePdf(a);if(!r){toast(t('PDF file missing.','PDF file එක හමු නොවීය.'));return}printUrl(r.url)}
+function printUrl(url){const old=document.getElementById('pmvPrintFrame');if(old)old.remove();const fr=document.createElement('iframe');fr.id='pmvPrintFrame';fr.style.position='fixed';fr.style.left='-9999px';fr.style.top='0';fr.style.width='1px';fr.style.height='1px';fr.style.border='0';fr.onload=()=>setTimeout(()=>{try{fr.contentWindow.focus();fr.contentWindow.print()}catch{const w=window.open(url,'_blank');if(w){setTimeout(()=>{try{w.focus();w.print()}catch{}},700)}}},600);fr.src=url;document.body.appendChild(fr);setTimeout(()=>{try{fr.remove()}catch{}},60000)}
+async function downloadMedia(id,name){const o=await mediaGet(id);if(!o){toast(t('File missing.','File එක හමු නොවීය.'));return}const a=document.createElement('a');a.href=URL.createObjectURL(o.blob);a.download=name||o.name||'download';document.body.appendChild(a);a.click();a.remove()}
+function showModal(){document.getElementById('modal').showModal()}
+function closeModal(){document.getElementById('modal').close()}
+function filterText(inp,id){const q=inp.value.toLowerCase();document.querySelectorAll('#'+id+' .card').forEach(c=>{c.style.display=c.textContent.toLowerCase().includes(q)?'':'none'})}
+function previewInput(input,id){const f=input.files[0];if(!f)return;const u=URL.createObjectURL(f);document.getElementById(id).innerHTML=`<img class="preview-img" src="${u}" alt="Preview">`}
+async function hydrateMedia(root=document){if(!root)return;for(const el of root.querySelectorAll('[data-media-id]')){const raw=el.dataset.mediaId;if(!raw)continue;try{const o=await mediaGet(raw);if(!o)continue;const u=o.url||((o.blob)?URL.createObjectURL(o.blob):'');if(!u)continue;if(el.tagName==='IMG'){el.src=u;el.style.display='block'}else if(el.tagName==='VIDEO'){el.src=u;el.load()}}catch(err){console.warn('PMV media load failed',raw,err)}}for(const card of root.querySelectorAll('[data-media-card]')){const kind=card.dataset.mediaCard,id=Number(card.dataset.id),item=kind==='photo'?db.gallery.find(v=>v.id===id):db.videos.find(v=>v.id===id);if(!item)continue;try{let u=item.dataUrl||item.photoData||'';if(!u&&item.mediaId){const o=await mediaGet(item.mediaId);if(o)u=o.url||((o.blob)?URL.createObjectURL(o.blob):'')}if(!u){card.innerHTML=`<div class="empty">${t('Media file not found.','Media file එක හමු නොවීය.')}</div>`;continue}card.innerHTML=kind==='photo'?`<img class="media-cover" src="${esc(u)}" alt="${esc(t(item.titleEn,item.titleSi))}" loading="lazy">`:`<video controls preload="metadata" class="media-cover" src="${esc(u)}"></video>`}catch(err){console.warn('PMV media card failed',err);card.innerHTML=`<div class="empty">${t('Could not load media.','Media load කරන්න බැරි වුණා.')}</div>`}}}
+
+/* IndexedDB: keeps large photos/videos/PDFs working better than localStorage. */
+const DB_NAME='PMVMediaDB2',STORE='files';let idbPromise=null;
+function idb(){if(idbPromise)return idbPromise;idbPromise=new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});return idbPromise}
+async function mediaPut(kind,file){
+  const k=kind==='pdf'?'pdf':(kind==='video'?'video':'image');
+  return cloudinaryUpload(k,file);
+}
+async function mediaGet(id){
+  if(id===null||id===undefined||id==='')return null;
+  if(typeof id==='string'&&/^https?:\/\//i.test(id)){
+    try{const r=await fetch(id);if(!r.ok)throw new Error('Media fetch failed');return {id,name:id.split('/').pop()||'media',type:r.headers.get('content-type')||'',blob:await r.blob(),url:id};}
+    catch(err){console.warn('Cloud media fetch failed',err);return {id,name:id.split('/').pop()||'media',type:'',blob:null,url:id};}
+  }
+  const dbx=await idb();return new Promise((res,rej)=>{const key=Number.isFinite(Number(id))?Number(id):id;let q;try{q=dbx.transaction(STORE,'readonly').objectStore(STORE).get(key)}catch(err){rej(err);return}q.onsuccess=()=>res(q.result||null);q.onerror=()=>rej(q.error)})
+}
+async function mediaDelete(id){
+  if(id===null||id===undefined||id==='')return;
+  if(typeof id==='string'&&/^https?:\/\//i.test(id))return;
+  try{const dbx=await idb();await new Promise((res,rej)=>{const tx=dbx.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(Number(id));tx.oncomplete=res;tx.onerror=()=>rej(tx.error)})}catch{}
+}
+function browserNotify(title){if('Notification' in window){if(Notification.permission==='granted')new Notification('PMV School App',{body:title});else if(Notification.permission!=='denied')Notification.requestPermission().then(p=>{if(p==='granted')new Notification('PMV School App',{body:title})})}}
+
+async function render(){applyPrefs();await applyMediaSettings();if(!settings.lang){document.getElementById('languageScreen').style.display='flex';return}document.getElementById('languageScreen').style.display='none';nav();const p=location.hash.slice(1)||'home';const map={home,notices,events,parents,applications,gallery,videos,staff,achievements,about,contact,notifications:notificationsPage,settings:settingsPage,admin};document.getElementById('main').innerHTML=(map[p]||home)();await applyMediaSettings();if(p==='admin'&&logged)setTimeout(()=>renderAdminArea(),0);setTimeout(()=>hydrateMedia(document.getElementById('main')),0)}
+window.addEventListener('hashchange',()=>{render();const s=document.getElementById('side');if(innerWidth<=820)s.style.display='none'});
+window.addEventListener('load',()=>{if(settings.lang)document.getElementById('languageScreen').style.display='none';render();setTimeout(()=>pmvInitFirestore(),300)});
+</script>
+</body>
+</html>
